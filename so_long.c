@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 09:59:59 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/05 18:23:16 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/06 15:29:18 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_count_line(char *file, t_pars *pars)
 	close(fd);
 }
 
-void	parse_line(t_pars *pars, t_lo *game)
+void	check_walls(t_pars *pars, t_lo *game)
 {
 	game->x = 0;
 	while (game->map[0][game->x + 3])
@@ -55,13 +55,20 @@ void	parse_line(t_pars *pars, t_lo *game)
 			exit((ft_free_tab(game->map), ft_printf("Error\nMap Open3"), 1));
 		game->y++;
 	}
+	game->y = 1;
+	while (game->map[game->y + 1])
+	{
+		if (ft_strlen(game->map[game->y]) != pars->length)
+			exit((ft_free_tab(game->map), ft_printf("Error\nMap Open4"), 1));
+		game->y++;
+	}
 }
 
 void	map_cpy(t_pars *pars, char *file, t_lo *game)
 {
 	int	fd;
 
-	game->map = malloc(sizeof(char *) * pars->height + 1);
+	game->map = malloc(sizeof(char *) * (pars->height + 1));
 	if (!game->map)
 		exit((ft_free_tab(game->map), ft_printf("malloc error"), 1));
 	fd = open(file, O_RDONLY);
@@ -78,16 +85,30 @@ void	map_cpy(t_pars *pars, char *file, t_lo *game)
 			exit((ft_free_tab(game->map), ft_printf("malloc error"), 1));
 		game->x++;
 	}
-	game->map[game->x] = '\0';
+	game->map[pars->height] = NULL;
+	if (ft_strlen(game->map[game->x - 1]) != pars->length - 1)
+		exit((ft_free_tab(game->map), ft_printf("Error\nMap Open5"), 1));
 	close(fd);
 }
 
-void    parsing_map(char *file, t_pars *pars, t_lo *game)
+void	parsing_map(char *file, t_pars *pars, t_lo *game)
 {
 	ft_count_line(file, pars);
 	map_cpy(pars, file, game);
-	parse_line(pars, game);
-	ft_free_tab(game->map);
+	check_walls(pars, game);
+	if (check_infos(game) == -1)
+		exit((ft_free_tab(game->map), \
+		ft_printf("Error\nInput Error"), 1));
+	if (game->player != 1)
+		exit((ft_free_tab(game->map), \
+		ft_printf("Error\nInput Error"), 1));
+	if (game->exit != 1)
+		exit((ft_free_tab(game->map), \
+		ft_printf("Error\nInput Error"), 1));
+	if (game->coll < 1)
+		exit((ft_free_tab(game->map), \
+		ft_printf("Error\nInput Error"), 1));
+	check_valid_exit(game);
 }
 
 int main(int argc, char **argv)
@@ -95,8 +116,13 @@ int main(int argc, char **argv)
 	t_lo	game;
 	t_pars	pars;
 
+	game.exit = 0;
+	game.player = 0;
+	game.coll = 0;
 	game.x = 0;
 	game.y = 0;
+	game.map = NULL;
 	(void)argc;
 	parsing_map(argv[1], &pars, &game);
+	ft_free_tab(game.map);
 }

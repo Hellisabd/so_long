@@ -12,7 +12,7 @@ MAGENTA = \033[0;95m
 CYAN = \033[0;96m
 WHITE = \033[0;97m
 
-SRCS	= 
+SRCS	= parsing.c
 
 SRCS_MAIN	= so_long.c $(SRCS)
 
@@ -20,7 +20,7 @@ OBJS	= $(SRCS_MAIN:.c=.o)
 
 CC	= @gcc
 
-CFLAGS	+= -Wall -Wextra -Werror -g3 #-fsanitize=address
+CFLAGS	+= -Wall -Wextra -Werror -g3 -fsanitize=address
 
 RM	= @rm -rf
 
