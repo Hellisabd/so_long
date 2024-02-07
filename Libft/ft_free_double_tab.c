@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:52:12 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/06 18:00:59 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/07 11:38:29 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	ft_free_tab(char **tab)
 	{
 		while (tab[i])
 		{
-			printf("%s", tab[i]);
 			free (tab[i]);
 			i++;
 		}

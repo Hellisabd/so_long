@@ -12,7 +12,8 @@ MAGENTA = \033[0;95m
 CYAN = \033[0;96m
 WHITE = \033[0;97m
 
-SRCS	= parsing.c
+SRCS	= 	parsing.c \
+			spread.c
 
 SRCS_MAIN	= so_long.c $(SRCS)
 

@@ -4,7 +4,14 @@
             "cwd": "/home/bgrosjea/Desktop/so_long",
             "binaryPath": "/home/bgrosjea/Desktop/so_long/so_long",
             "binaryArgs": [
-                "map_file.txt"
+                "map_file.ber"
+            ]
+        },
+        {
+            "cwd": "/home/bgrosjea/Desktop/so_long",
+            "binaryPath": "/home/bgrosjea/Desktop/so_long/so_long",
+            "binaryArgs": [
+                "map_file.ber"
             ]
         }
     ]

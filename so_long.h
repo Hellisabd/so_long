@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:16:44 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/06 16:42:15 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/07 11:42:03 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,11 @@ typedef struct s_pars
 	size_t	length;
 }	t_pars;
 
-int   check_infos(t_lo *game);
-int	check_valid_exit(t_lo *g);
+int		check_infos(t_lo *game);
+void	check_valid_exit(t_lo *g);
+void	spread_x(t_lo *g);
+void	spread_y(t_lo *g);
+bool	check_c_left(t_lo *g, char c);
+bool	check_c_left2(t_lo *g, char c);
 
 #endif

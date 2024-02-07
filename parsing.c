@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 10:18:50 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/06 18:01:50 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/07 11:43:18 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,65 @@ void	get_p_and_e_pos(t_lo *g)
 				g->e_x = g->x;
 				g->e_y = g->y;
 			}
-				g->x++;
+			g->x++;
 		}
 		g->y++;
 	}
 }
 
-int	check_valid_exit(t_lo *g)
+bool	verif(t_lo *g)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (g->map[y])
+	{
+		x = 0;
+		while (g->map[y][x])
+		{
+			if ((g->map[y][x] == 'P' || g->map[y][x] == 'X')
+				&& (g->map[y][x + 1] == 'Y' || g->map[y][x - 1] == 'Y'
+				|| g->map[y + 1][x] == 'Y' || g->map[y - 1][x] == 'Y'
+				|| g->map[y][x + 1] == 'E' || g->map[y][x - 1] == 'E'
+				|| g->map[y + 1][x] == 'E' || g->map[y - 1][x] == 'E'))
+				return (true);
+			x++;
+		}
+		y++;
+	}
+	return (false);
+}
+
+bool	find_exit(t_lo *g)
+{
+	while (!check_c_left(g, '0'))
+	{
+		g->y = 0;
+		while (g->map[g->y])
+		{
+			g->x = -1;
+			while (g->map[g->y][++g->x])
+			{
+				spread_x(g);
+				spread_y(g);
+			}
+			g->y++;
+		}
+	}
+	if (!check_c_left2(g, 'C'))
+		exit((ft_free_tab(g->map), \
+		ft_printf("Error\nCan't reach all the collectible\n"), 1));
+	if (verif(g))
+		return (ft_printf("Exit found\n"), true);
+	return (false);
+}
+
+void	check_valid_exit(t_lo *g)
 {
 	get_p_and_e_pos(g);
-	// find_exit(g, )
-	return (0);
+	if (!find_exit(g))
+		exit((ft_free_tab(g->map), ft_printf("Error\nCan't reach the exit"), 1));
 }
 
 int	check_infos(t_lo *g)
@@ -71,4 +119,3 @@ int	check_infos(t_lo *g)
 	}
 	return (0);
 }
-
