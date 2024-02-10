@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:38:33 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/09 18:17:50 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/10 11:04:28 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void    set_uwall(t_lo *g)
 	i = 0;
 	m = 5.597014925;
 	g->div_wall_x = WIDTH / (g->width - 1); 
+	ft_printf("g->div_wall_x : %d\n", g->div_wall_x);
 	pos_x = 0;
 	g->sprite.uwall_t = mlx_load_png("assets/up_wall.png");
 	if (!g->sprite.uwall_t)

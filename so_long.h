@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:16:44 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/09 18:06:42 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/10 10:20:18 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,12 @@ void    set_walls(t_lo *g);
 
 void    hidden_map(t_lo *g);
 void    get_sprite_pos(t_lo *g);
+
+//COLLISIONS
+
+bool     check_collision_down(t_lo *g);
+bool     check_collision_up(t_lo *g);
+bool     check_collision_right(t_lo *g);
+bool     check_collision_left(t_lo *g);
 
 #endif
