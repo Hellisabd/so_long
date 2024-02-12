@@ -1,8 +1,6 @@
 NAME	= so_long
 
-LIBMLX	= ./MLX42
-
-LIBS	= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
+LIBS	= MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm
 
 DEF_COLOR = \033[0;39m
 GRAY = \033[0;90m
@@ -23,7 +21,8 @@ SRCS	= 	map/parsing.c \
 			animation/walls.c \
 			free_things.c	\
 			hidden_map.c	\
-			check_collision.c
+			check_collision.c \
+			gravity.c
 
 SRCS_MAIN	= so_long.c $(SRCS)
 
@@ -35,10 +34,7 @@ CFLAGS	+= -Wall -Wextra -Werror -g3 #-fsanitize=address
 
 RM	= @rm -rf
 
-all	: libmlx $(NAME)
-
-libmlx :
-	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+all	: $(NAME)
 
 bonus	: $(NAME_BONUS)
 

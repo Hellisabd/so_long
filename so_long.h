@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:16:44 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/10 10:20:18 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/12 14:20:30 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_sprite
 
 typedef struct s_hidden
 {
-	int		**hidden_map;
+	char		**hidden_map;
 	int		start_y;
 	int		end_y;
 	int		start_x;
@@ -107,6 +107,7 @@ void    set_walls(t_lo *g);
 
 void    hidden_map(t_lo *g);
 void    get_sprite_pos(t_lo *g);
+void	gravity(t_lo *g);
 
 //COLLISIONS
 

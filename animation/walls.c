@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:38:33 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/10 11:04:28 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/12 13:18:58 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ void    set_dwall(t_lo *g)
 		get_sprite_pos(g);
 		pos_x += g->div_wall_x;
 	}
+	// ft_printf("%s", g->h_m.hidden_map[0]);
 }
 
 void    set_walls(t_lo *g)
@@ -148,6 +149,12 @@ void    set_walls(t_lo *g)
 	set_rwall(g);
 	set_lwall(g);
 	set_dwall(g);
+	// int i = 30;
+	// while (i < 1230)
+	// {
+	// 	ft_printf("%s\n", g->h_m.hidden_map[i]);
+	// 	i++;
+	// }
 	pos_y = g->div_wall_y;
 	g->y = 1;
 	while (g->y < (size_t)g->height - 1)

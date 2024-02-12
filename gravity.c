@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   gravity.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 09:59:59 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/12 13:04:00 by bgrosjea         ###   ########.fr       */
+/*   Created: 2024/02/12 14:01:22 by bgrosjea          #+#    #+#             */
+/*   Updated: 2024/02/12 15:06:38 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(void)
+void    gravity(t_lo *g)
 {
-	t_lo	game;
-	t_pars	pars;
-	char	*file;
-
-	file = "map/map_file.ber";
-	game.exit = 0;
-	game.player = 0;
-	game.coll = 0;
-	game.x = 0;
-	game.y = 0;
-	game.map = NULL;
-	parsing_map(file, &pars, &game);
-	game.height = pars.height;
-	game.width = pars.length;
-	hidden_map(&game);
-	open_window(&game);
-	ft_free_tab(game.map);
-	ft_free_tab(game.h_m.hidden_map);
+    while (check_collision_down(g))
+    {
+        g->sprite.player->instances[0].y += 1;
+        g->data_p.player_pos_y += 1;
+    }
 }
