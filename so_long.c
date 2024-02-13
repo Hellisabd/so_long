@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 09:59:59 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/12 13:04:00 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:46:27 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(void)
 	game.coll = 0;
 	game.x = 0;
 	game.y = 0;
+	game.data_p.p_speed = 10;
 	game.map = NULL;
 	parsing_map(file, &pars, &game);
 	game.height = pars.height;

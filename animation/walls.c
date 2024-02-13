@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:38:33 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/12 13:18:58 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/13 10:25:25 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void    set_lwall(t_lo *g)
 		g->h_m.start_y = pos_y;
 		g->h_m.end_x = g->h_m.start_x + (g->div_wall_y / m);
 		g->h_m.end_y = g->h_m.start_y + g->div_wall_y;
-		get_sprite_pos(g);
+		get_sprite_pos(g, '1');
 		pos_y += g->div_wall_y;
 		i++;
 	}
@@ -69,7 +69,7 @@ void    set_rwall(t_lo *g)
 		g->h_m.start_y = pos_y;
 		g->h_m.end_x = g->h_m.start_x + (g->div_wall_y / m);
 		g->h_m.end_y = g->h_m.start_y + g->div_wall_y;
-		get_sprite_pos(g);
+		get_sprite_pos(g, '1');
 		pos_y += g->div_wall_y;
 		i++;
 	}
@@ -102,7 +102,7 @@ void    set_uwall(t_lo *g)
 		g->h_m.start_y = 0;
 		g->h_m.end_x = g->h_m.start_x + g->div_wall_x;
 		g->h_m.end_y = g->h_m.start_y + (g->div_wall_x / m);
-		get_sprite_pos(g);
+		get_sprite_pos(g, '1');
 		i++;
 		pos_x += g->div_wall_x;
 	}
@@ -134,7 +134,7 @@ void    set_dwall(t_lo *g)
 		g->h_m.start_y = HEIGHT - (g->div_wall_x / m);
 		g->h_m.end_x = g->h_m.start_x + g->div_wall_x;
 		g->h_m.end_y = g->h_m.start_y + (g->div_wall_x / m);
-		get_sprite_pos(g);
+		get_sprite_pos(g, '1');
 		pos_x += g->div_wall_x;
 	}
 	// ft_printf("%s", g->h_m.hidden_map[0]);
@@ -149,12 +149,6 @@ void    set_walls(t_lo *g)
 	set_rwall(g);
 	set_lwall(g);
 	set_dwall(g);
-	// int i = 30;
-	// while (i < 1230)
-	// {
-	// 	ft_printf("%s\n", g->h_m.hidden_map[i]);
-	// 	i++;
-	// }
 	pos_y = g->div_wall_y;
 	g->y = 1;
 	while (g->y < (size_t)g->height - 1)
@@ -171,7 +165,7 @@ void    set_walls(t_lo *g)
 				g->h_m.start_y = (pos_y + (g->div_wall_y / 2));
 				g->h_m.end_x = g->h_m.start_x + g->div_wall_x;
 				g->h_m.end_y = g->h_m.start_y + (g->div_wall_x / 5.597014925);
-				get_sprite_pos(g);
+				get_sprite_pos(g, '1');
 			}
 			pos_x += g->div_wall_x;
 			g->x++;

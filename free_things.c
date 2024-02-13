@@ -6,12 +6,20 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:44:01 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/09 13:24:38 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/13 18:16:20 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
  #include "so_long.h"
  
+void	delete_c(t_lo *g, char c)
+{
+	if (g->map[g->del.y][g->del.x] == c)
+		g->map[g->del.y][g->del.x] = '0';
+	if (g->map[g->del.y][g->del.x + 1] == c)
+		g->map[g->del.y][g->del.x + 1] = '0';
+}
+
 void    destroy_all(t_lo *g)
 {
 	if (g->sprite.back_t)

@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 10:18:50 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/09 13:35:44 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/13 11:19:37 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ bool	find_exit(t_lo *g)
 		exit((ft_free_tab(g->map), \
 		ft_printf("Error\nCan't reach all the collectible\n"), 1));
 	if (verif(g))
-		return (ft_printf("Exit found\n"), true);
+		return (true);
 	return (false);
 }
 

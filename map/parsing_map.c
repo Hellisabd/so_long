@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:48:27 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/09 15:17:34 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/13 11:40:34 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,8 @@ void	parsing_map(char *file, t_pars *pars, t_lo *game)
 		exit((ft_free_tab(game->map), \
 		ft_printf("Error\nInput Error"), 1));
 	check_valid_exit(game);
-	// ft_free_tab(game->map);
+	ft_free_tab(game->map);
+	game->x = 0;
+	ft_count_line(file, pars);
+	map_cpy(pars, file, game);
 }

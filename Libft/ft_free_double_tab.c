@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:52:12 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/12 12:02:55 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/13 16:30:38 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	ft_free_tab(char **tab)
 	i = 0;
 	if (tab)
 	{
-		while (tab[i])
+		while (tab && tab[i])
 		{
-			// ft_printf("%sEOL\n", tab[i]);
+			// ft_printf("%s\n", tab[i]);
 			free (tab[i]);
 			i++;
 		}

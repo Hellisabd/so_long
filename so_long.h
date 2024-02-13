@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:16:44 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/12 14:20:30 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/13 18:12:27 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "Libft/libft.h"
 # include "MLX42/include/MLX42/MLX42.h"
+# include "math.h"
 
 #define WIDTH 2000
 #define HEIGHT 1250
@@ -27,12 +28,14 @@ typedef struct s_sprite
 	mlx_texture_t   *rwall_t;
 	mlx_texture_t   *lwall_t;
 	mlx_texture_t   *dwall_t;
+	mlx_texture_t   *c_speed_t;
 	mlx_image_t  *background;
 	mlx_image_t  *player;
 	mlx_image_t  *uwall;
 	mlx_image_t  *rwall;
 	mlx_image_t  *lwall;
 	mlx_image_t  *dwall;
+	mlx_image_t  *c_speed;
 }	t_sprite;
 
 typedef struct s_hidden
@@ -44,14 +47,33 @@ typedef struct s_hidden
 	int		end_x;		
 } t_hidden;
 
+typedef struct s_del
+{
+	float	f_x;
+	float	f_y;
+	int	x;
+	int	y;
+} t_del;
+
 typedef struct s_data_p
 {
 	int32_t	player_pos_y;
 	int32_t	player_pos_x;
 	int32_t	player_size_x;
 	int32_t	player_size_y;
+	int		p_speed;
 	
 } t_data_p;
+
+typedef struct s_coll
+{
+	int	size_x;
+	int	size_y;
+	int	start_x;
+	int	start_y;
+	int	end_x;
+	int	end_y;
+}	t_coll;
 
 typedef struct s_lo
 {
@@ -73,7 +95,12 @@ typedef struct s_lo
 	t_data_p	data_p;
 	int		div_wall_y;
 	t_hidden	h_m;
+	t_coll		coll1;
+	t_coll		coll2;
+	t_coll		coll3;
+	t_del		del;
 }	t_lo;
+
 
 typedef struct s_pars
 {
@@ -102,18 +129,22 @@ void    destroy_all(t_lo *g);
 void    set_background(t_lo *g);
 void    set_player(t_lo *g);
 void    set_walls(t_lo *g);
+void    set_coll(t_lo *g);
 
 //Secrets
 
 void    hidden_map(t_lo *g);
-void    get_sprite_pos(t_lo *g);
+void    get_sprite_pos(t_lo *g, char c);
 void	gravity(t_lo *g);
 
 //COLLISIONS
 
-bool     check_collision_down(t_lo *g);
-bool     check_collision_up(t_lo *g);
-bool     check_collision_right(t_lo *g);
-bool     check_collision_left(t_lo *g);
+bool	check_collision_down(t_lo *g);
+bool	check_collision_up(t_lo *g);
+bool	check_collision_right(t_lo *g);
+bool	check_collision_left(t_lo *g);
+void	check_collectible(t_lo *g);
+void    get_sprite_pos_coll(t_lo *g, char replace, t_coll *coll, char find);
+void	delete_c(t_lo *g, char c);
 
 #endif
