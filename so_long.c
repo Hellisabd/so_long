@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 09:59:59 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/13 14:46:27 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/14 10:32:14 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ int	main(void)
 	parsing_map(file, &pars, &game);
 	game.height = pars.height;
 	game.width = pars.length;
+	game.coll1.c = 'S';
+	game.coll2.c = 'J';
+	game.coll3.c = 'W';
+	game.coll1.path = "assets/c_speed.png";
 	hidden_map(&game);
 	open_window(&game);
 	ft_free_tab(game.map);

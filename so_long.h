@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:16:44 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/13 18:12:27 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/14 10:31:36 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,14 @@ typedef struct s_data_p
 
 typedef struct s_coll
 {
-	int	size_x;
-	int	size_y;
-	int	start_x;
-	int	start_y;
-	int	end_x;
-	int	end_y;
+	char	c;
+	char	*path;
+	int		size_x;
+	int		size_y;
+	int		start_x;
+	int		start_y;
+	int		end_x;
+	int		end_y;
 }	t_coll;
 
 typedef struct s_lo
@@ -80,6 +82,7 @@ typedef struct s_lo
 	int		player;
 	int		exit;
 	int		coll;
+	int		nb_coll;
 	char	**map;
 	size_t	x;
 	size_t	y;
@@ -95,6 +98,7 @@ typedef struct s_lo
 	t_data_p	data_p;
 	int		div_wall_y;
 	t_hidden	h_m;
+	t_coll		aff_coll;
 	t_coll		coll1;
 	t_coll		coll2;
 	t_coll		coll3;
@@ -136,6 +140,7 @@ void    set_coll(t_lo *g);
 void    hidden_map(t_lo *g);
 void    get_sprite_pos(t_lo *g, char c);
 void	gravity(t_lo *g);
+void	integr_coll(t_lo *g);
 
 //COLLISIONS
 

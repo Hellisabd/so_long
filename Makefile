@@ -35,6 +35,8 @@ CFLAGS	+= -Wall -Wextra -Werror -g3 #-fsanitize=address
 
 RM	= @rm -rf
 
+CURRENT_DATE	:= $(shell date +"%Y-%m-%d %H:%M:%S")
+
 all	: $(NAME)
 
 bonus	: $(NAME_BONUS)
@@ -65,3 +67,8 @@ re :	fclean all
 
 ex :	re clean
 	@echo "$(GREEN)(•̀ᴗ•́)و ̑̑ALL FINE!(•̀ᴗ•́)و ̑̑$(DEF_COLOR)"
+
+git	:
+	git add .
+	git commit -m "$(CURRENT_DATE)"
+	git push
