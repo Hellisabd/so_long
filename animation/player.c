@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:43:30 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/13 15:27:44 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/14 14:25:52 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 void    set_player(t_lo *g)
 {
-    g->sprite.player_t = mlx_load_png("assets/walk1.png");
+    g->sprite.player_t = mlx_load_png("assets/red_c.png");
     if (!g->sprite.player_t)
         exit ((ft_printf("Error loading PNG\n"), EXIT_FAILURE));
     g->sprite.player = mlx_texture_to_image(g->mlx, g->sprite.player_t);
 	if (!g->sprite.player)
 		exit((ft_printf("Error during loading texture to image\n"), EXIT_FAILURE));
-    if (!mlx_resize_image(g->sprite.player, (WIDTH / 21), (HEIGHT / 8.5)))
+    if (!mlx_resize_image(g->sprite.player, g->size_block_x, g->size_block_y))
         exit ((ft_printf("Error resizing Background\n"), EXIT_FAILURE));
     if (-1 == mlx_image_to_window(g->mlx, g->sprite.player, g->p_x * (WIDTH / (g->width - 1)), g->p_y * (HEIGHT / g->height - 1)))
         exit ((destroy_all(g), ft_printf("Error during passing image to window\n", 1)));
-    g->data_p.player_size_y = HEIGHT / 8.5;
-    g->data_p.player_size_x = WIDTH / 21;
 }

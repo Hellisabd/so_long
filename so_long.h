@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:16:44 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/14 10:31:36 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/14 14:23:46 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,18 @@
 # include "MLX42/include/MLX42/MLX42.h"
 # include "math.h"
 
-#define WIDTH 2000
-#define HEIGHT 1250
+#define WIDTH 1000
+#define HEIGHT 1000
 
 typedef struct s_sprite
 {
 	mlx_texture_t   *back_t;
 	mlx_texture_t   *player_t;
-	mlx_texture_t   *uwall_t;
-	mlx_texture_t   *rwall_t;
-	mlx_texture_t   *lwall_t;
-	mlx_texture_t   *dwall_t;
+	mlx_texture_t   *wall_t;
 	mlx_texture_t   *c_speed_t;
 	mlx_image_t  *background;
 	mlx_image_t  *player;
-	mlx_image_t  *uwall;
-	mlx_image_t  *rwall;
-	mlx_image_t  *lwall;
-	mlx_image_t  *dwall;
+	mlx_image_t  *wall;
 	mlx_image_t  *c_speed;
 }	t_sprite;
 
@@ -86,6 +80,8 @@ typedef struct s_lo
 	char	**map;
 	size_t	x;
 	size_t	y;
+	float		size_block_x;
+	float		size_block_y;
 	int		p_x;
 	int		p_y;
 	int		e_x;
@@ -94,10 +90,7 @@ typedef struct s_lo
 	t_sprite sprite;
 	int		height;
 	int		width;
-	int		div_wall_x;
 	t_data_p	data_p;
-	int		div_wall_y;
-	t_hidden	h_m;
 	t_coll		aff_coll;
 	t_coll		coll1;
 	t_coll		coll2;
@@ -144,12 +137,8 @@ void	integr_coll(t_lo *g);
 
 //COLLISIONS
 
-bool	check_collision_down(t_lo *g);
-bool	check_collision_up(t_lo *g);
-bool	check_collision_right(t_lo *g);
-bool	check_collision_left(t_lo *g);
 void	check_collectible(t_lo *g);
 void    get_sprite_pos_coll(t_lo *g, char replace, t_coll *coll, char find);
-void	delete_c(t_lo *g, char c);
+void	delete_c(t_lo *g);
 
 #endif

@@ -20,9 +20,6 @@ SRCS	= 	map/parsing.c \
 			animation/player.c \
 			animation/walls.c \
 			free_things.c	\
-			hidden_map.c	\
-			check_collision.c \
-			gravity.c		\
 			coll.c
 
 SRCS_MAIN	= so_long.c $(SRCS)
