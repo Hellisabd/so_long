@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:38:33 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/14 14:26:15 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/14 17:38:30 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,23 @@ void    set_walls(t_lo *g)
 		while (g->map[g->y][g->x])
 		{
 			if (g->map[g->y][g->x] == '1')
-			{
 				if (-1 == mlx_image_to_window(g->mlx, g->sprite.wall, pos_x, pos_y))
 					exit ((destroy_all(g), ft_printf("Error during passing image to window\n", 1)));
-			}
+			if (g->map[g->y][g->x] == 'P')
+			    if (-1 == mlx_image_to_window(g->mlx, g->sprite.player, pos_x, pos_y))
+        			exit ((destroy_all(g), ft_printf("Error during passing image to window\n", 1)));
+			if (g->map[g->y][g->x] == 'S')
+			    if (-1 == mlx_image_to_window(g->mlx, g->sprite.c1, pos_x, pos_y))
+        			exit ((destroy_all(g), ft_printf("Error during passing image to window\n", 1)));
+			if (g->map[g->y][g->x] == 'W')
+			    if (-1 == mlx_image_to_window(g->mlx, g->sprite.c2, pos_x, pos_y))
+        			exit ((destroy_all(g), ft_printf("Error during passing image to window\n", 1)));
+			if (g->map[g->y][g->x] == 'J')
+			    if (-1 == mlx_image_to_window(g->mlx, g->sprite.c3, pos_x, pos_y))
+        			exit ((destroy_all(g), ft_printf("Error during passing image to window\n", 1)));
+			if (g->map[g->y][g->x] == 'D')
+			    if (-1 == mlx_image_to_window(g->mlx, g->sprite.ennemies, pos_x, pos_y))
+        			exit ((destroy_all(g), ft_printf("Error during passing image to window\n", 1)));
 			pos_x += g->size_block_x;
 			g->x++;
 		}

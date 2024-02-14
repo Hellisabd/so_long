@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:48:27 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/14 13:45:55 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:39:00 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,5 @@ void	parsing_map(char *file, t_pars *pars, t_lo *game)
 	game->x = 0;
 	ft_count_line(file, pars);
 	map_cpy(pars, file, game);
-	// integr_coll(game);
+	game->count_coll = integr_coll(game);
 }

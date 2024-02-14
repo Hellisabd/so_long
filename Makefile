@@ -20,7 +20,10 @@ SRCS	= 	map/parsing.c \
 			animation/player.c \
 			animation/walls.c \
 			free_things.c	\
-			coll.c
+			coll.c	\
+			collision.c \
+			animation/exit.c \
+			animation/ennemies.c
 
 SRCS_MAIN	= so_long.c $(SRCS)
 

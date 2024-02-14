@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:16:44 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/14 14:23:46 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/14 17:54:41 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,27 @@
 # include "MLX42/include/MLX42/MLX42.h"
 # include "math.h"
 
-#define WIDTH 1000
-#define HEIGHT 1000
+#define WIDTH 2000
+#define HEIGHT 2000
 
 typedef struct s_sprite
 {
 	mlx_texture_t   *back_t;
 	mlx_texture_t   *player_t;
 	mlx_texture_t   *wall_t;
-	mlx_texture_t   *c_speed_t;
+	mlx_texture_t   *c1_t;
+	mlx_texture_t   *c2_t;
+	mlx_texture_t   *c3_t;
+	mlx_texture_t   *exit_t;
+	mlx_texture_t   *ennemies_t;
 	mlx_image_t  *background;
 	mlx_image_t  *player;
 	mlx_image_t  *wall;
-	mlx_image_t  *c_speed;
+	mlx_image_t  *exit;
+	mlx_image_t  *c1;
+	mlx_image_t  *c2;
+	mlx_image_t  *c3;
+	mlx_image_t  *ennemies;
 }	t_sprite;
 
 typedef struct s_hidden
@@ -59,17 +67,17 @@ typedef struct s_data_p
 	
 } t_data_p;
 
-typedef struct s_coll
-{
-	char	c;
-	char	*path;
-	int		size_x;
-	int		size_y;
-	int		start_x;
-	int		start_y;
-	int		end_x;
-	int		end_y;
-}	t_coll;
+// typedef struct s_coll
+// {
+// 	char	c;
+// 	char	*path;
+// 	int		size_x;
+// 	int		size_y;
+// 	int		start_x;
+// 	int		start_y;
+// 	int		end_x;
+// 	int		end_y;
+// }	t_coll;
 
 typedef struct s_lo
 {
@@ -77,6 +85,7 @@ typedef struct s_lo
 	int		exit;
 	int		coll;
 	int		nb_coll;
+	int		count_move;
 	char	**map;
 	size_t	x;
 	size_t	y;
@@ -91,11 +100,9 @@ typedef struct s_lo
 	int		height;
 	int		width;
 	t_data_p	data_p;
-	t_coll		aff_coll;
-	t_coll		coll1;
-	t_coll		coll2;
-	t_coll		coll3;
+	mlx_image_t  *str_screen;
 	t_del		del;
+	int			count_coll;
 }	t_lo;
 
 
@@ -127,18 +134,21 @@ void    set_background(t_lo *g);
 void    set_player(t_lo *g);
 void    set_walls(t_lo *g);
 void    set_coll(t_lo *g);
+void    set_exit(t_lo *g);
+void    aff_exit(t_lo *g);
 
 //Secrets
 
-void    hidden_map(t_lo *g);
-void    get_sprite_pos(t_lo *g, char c);
-void	gravity(t_lo *g);
-void	integr_coll(t_lo *g);
+int	integr_coll(t_lo *g);
 
 //COLLISIONS
 
 void	check_collectible(t_lo *g);
-void    get_sprite_pos_coll(t_lo *g, char replace, t_coll *coll, char find);
 void	delete_c(t_lo *g);
+bool	check_collosion_up(t_lo *g);
+bool	check_collosion_left(t_lo *g);
+bool	check_collosion_right(t_lo *g);
+bool	check_collosion_down(t_lo *g);
+void    set_ennemies(t_lo *g);
 
 #endif

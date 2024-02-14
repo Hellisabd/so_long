@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 10:18:50 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/13 11:19:37 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/14 17:34:52 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	check_infos(t_lo *g)
 			if (g->map[g->y][g->x] != 'P' && g->map[g->y][g->x] != 'E'
 				&& g->map[g->y][g->x] != '1' && g->map[g->y][g->x] != '0'
 				&& g->map[g->y][g->x] != 'C' && g->map[g->y][g->x] != '\0'
-				&& g->map[g->y][g->x] != '\n')
+				&& g->map[g->y][g->x] != '\n' && g->map[g->y][g->x] != 'D')
 				return (-1);
 		}
 		g->y++;

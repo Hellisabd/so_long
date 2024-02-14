@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:43:30 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/14 14:25:52 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/14 14:51:04 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,4 @@ void    set_player(t_lo *g)
 		exit((ft_printf("Error during loading texture to image\n"), EXIT_FAILURE));
     if (!mlx_resize_image(g->sprite.player, g->size_block_x, g->size_block_y))
         exit ((ft_printf("Error resizing Background\n"), EXIT_FAILURE));
-    if (-1 == mlx_image_to_window(g->mlx, g->sprite.player, g->p_x * (WIDTH / (g->width - 1)), g->p_y * (HEIGHT / g->height - 1)))
-        exit ((destroy_all(g), ft_printf("Error during passing image to window\n", 1)));
 }

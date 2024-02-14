@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 09:53:05 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/14 14:26:49 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/14 17:55:20 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,54 +14,62 @@
 
 void    set_coll(t_lo *g)
 {
-	int		pos_x;
-	int		pos_y;
+	g->sprite.c1_t = mlx_load_png("assets/yellow_c.png");
+	if (!g->sprite.c1_t)
+		exit ((ft_printf("Error loading speed PNG\n"), EXIT_FAILURE));
+	g->sprite.c1 = mlx_texture_to_image(g->mlx, g->sprite.c1_t);
+	if (!g->sprite.c1)
+		exit((ft_printf("Error during loading texture to image\n"), EXIT_FAILURE));
+	if (!mlx_resize_image(g->sprite.c1, g->size_block_x, g->size_block_y))
+		exit ((ft_printf("Error resizing collectible\n"), EXIT_FAILURE));
+	g->sprite.c2_t = mlx_load_png("assets/green_c.png");
+	if (!g->sprite.c2_t)
+		exit ((ft_printf("Error loading speed PNG\n"), EXIT_FAILURE));
+	g->sprite.c2 = mlx_texture_to_image(g->mlx, g->sprite.c2_t);
+	if (!g->sprite.c2)
+		exit((ft_printf("Error during loading texture to image\n"), EXIT_FAILURE));
+	if (!mlx_resize_image(g->sprite.c2, g->size_block_x, g->size_block_y))
+		exit ((ft_printf("Error resizing collectible\n"), EXIT_FAILURE));
+	g->sprite.c3_t = mlx_load_png("assets/green_c.png");
+	if (!g->sprite.c3_t)
+		exit ((ft_printf("Error loading speed PNG\n"), EXIT_FAILURE));
+	g->sprite.c3 = mlx_texture_to_image(g->mlx, g->sprite.c3_t);
+	if (!g->sprite.c3)
+		exit((ft_printf("Error during loading texture to image\n"), EXIT_FAILURE));
+	if (!mlx_resize_image(g->sprite.c3, g->size_block_x, g->size_block_y))
+		exit ((ft_printf("Error resizing collectible\n"), EXIT_FAILURE));
 
-	pos_y = 0;
-	g->x = 1;
-	g->y = 1;
-	while (g->y < (size_t)g->height - 1 && g->map[g->y])
-	{
-		pos_x = g->size_block_x;
-		g->x = 1;
-		while (g->x < (size_t)g->width - 2)
-		{
-			if (g->nb_coll == 0)
-				g->aff_coll = g->coll1;
-			if (g->nb_coll == 1)
-				g->aff_coll = g->coll2;
-			if (g->nb_coll == 2)
-				g->aff_coll = g->coll3;
-			if (g->map[g->y][g->x] == g->aff_coll.c && g->map[g->y][g->x])
-			{
-				g->sprite.c_speed_t = mlx_load_png(g->aff_coll.path);
-				if (!g->sprite.c_speed_t)
-					exit ((ft_printf("Error loading speed PNG\n"), EXIT_FAILURE));
-				g->sprite.c_speed = mlx_texture_to_image(g->mlx, g->sprite.c_speed_t);
-				if (!g->sprite.c_speed)
-					exit((ft_printf("Error during loading texture to image\n"), EXIT_FAILURE));
-				if (!mlx_resize_image(g->sprite.wall, g->size_block_x, g->size_block_y))
-					exit ((ft_printf("Error resizing collectible\n"), EXIT_FAILURE));
-				if (-1 == mlx_image_to_window(g->mlx, g->sprite.c_speed, pos_x, pos_y))
-					exit ((destroy_all(g), ft_printf("Error during passing image to window\n", 1)));
-				// get_sprite_pos_coll(g, g->aff_coll.c, &g->aff_coll, '0');
-				g->nb_coll++;
-			}
-			pos_x += g->size_block_x;
-			g->x++;
-		}
-		g->y++;
-		pos_y += g->size_block_y;
-	}
-	g->y = 0;
-	while (g->map[g->y])
-	{
-		printf("%s", g->map[g->y]);
-		g->y++;
-	}
 }
 
-void	integr_coll(t_lo *g)
+void	check_collectible(t_lo *g)
+{
+	int x;
+	int	y;
+
+	x = (int)round(g->data_p.player_pos_x / (WIDTH / (g->width - 1)));
+	y = (int)round(g->data_p.player_pos_y / (HEIGHT / g->height));
+	if (g->map[y][x] == 'S')
+	{
+		mlx_delete_image((g->count_coll--,g->mlx), g->sprite.c1);
+		g->map[y][x] = '0';
+	}
+	if (g->map[y][x] == 'W')
+	{
+		mlx_delete_image((g->count_coll--, g->mlx), g->sprite.c2);
+		g->map[y][x] = '0';
+	}
+	if (g->map[y][x] == 'J')
+	{
+		g->map[y][x] = '0';
+		mlx_delete_image((g->count_coll--, g->mlx), g->sprite.c3);
+	}
+	if (g->map[y][x] == 'e')
+		mlx_close_window((ft_printf("SUCCESS"), g->mlx));
+	if (g->map[y][x] == 'D')
+		mlx_close_window((ft_printf("You Died"), g->mlx));
+}
+
+int	integr_coll(t_lo *g)
 {
 	int		x;
 	int		y;
@@ -95,4 +103,5 @@ void	integr_coll(t_lo *g)
 		}
 		y++;
 	}
+	return (replace);
 }
