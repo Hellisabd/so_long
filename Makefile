@@ -69,7 +69,7 @@ ex :	re clean
 	@echo "$(GREEN)(•̀ᴗ•́)و ̑̑ALL FINE!(•̀ᴗ•́)و ̑̑$(DEF_COLOR)"
 
 git	:
-	@git add .
-	@git commit -m "$(CURRENT_DATE)"
-	@git push
+	git add . > /dev/null 2>&1
+	git commit -m "$(CURRENT_DATE)" > /dev/null 2>&1
+	git push > /dev/null 2>&1
 	@echo "$(GREEN)(•̀ᴗ•́)و ̑̑GIT UPDATE!(•̀ᴗ•́)و ̑̑$(DEF_COLOR)"
