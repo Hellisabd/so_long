@@ -20,10 +20,12 @@ SRCS	= 	map/parsing.c \
 			animation/player.c \
 			animation/walls.c \
 			free_things.c	\
-			coll.c	\
+			animation/collectible.c	\
 			collision.c \
 			animation/exit.c \
-			animation/ennemies.c
+			animation/ennemies.c \
+			animation/set_score.c \
+			animation/aff_digit.c
 
 SRCS_MAIN	= so_long.c $(SRCS)
 
@@ -73,3 +75,6 @@ git	:
 	@git commit -m "$(CURRENT_DATE)" > /dev/null 2>&1
 	@git push > /dev/null 2>&1
 	@echo "$(GREEN)(•̀ᴗ•́)و ̑̑GIT UPDATE!(•̀ᴗ•́)و ̑̑$(DEF_COLOR)"
+
+norm :
+	@norminette *.c *.h | grep -i -E 'Error'

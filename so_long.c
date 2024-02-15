@@ -6,19 +6,16 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 09:59:59 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/14 17:44:39 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:31:54 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(void)
+t_lo	lvl_def(char *file, t_lo game)
 {
-	t_lo	game;
 	t_pars	pars;
-	char	*file;
 
-	file = "map/map_file.ber";
 	game.exit = 0;
 	game.player = 0;
 	game.coll = 0;
@@ -26,6 +23,9 @@ int	main(void)
 	game.y = 0;
 	game.count_move = 0;
 	game.map = NULL;
+	game.time = 2147483647;
+	game.success = 0;
+	game.data_p.weapon = 0;
 	parsing_map(file, &pars, &game);
 	game.height = pars.height;
 	game.width = pars.length;
@@ -33,4 +33,15 @@ int	main(void)
 	game.size_block_y = round(HEIGHT / (float)(game.height));
 	open_window(&game);
 	ft_free_tab(game.map);
+	return (game);
+}
+
+int	main(void)
+{
+	char	*file0;
+	t_lo	g;
+
+	file0 = "map/map_file_2.ber";
+	g = lvl_def(file0, g);
+	mlx_terminate(g.mlx);
 }

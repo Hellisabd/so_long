@@ -17,6 +17,8 @@
     ],
     "editor.acceptSuggestionOnCommitCharacter": false,
     "files.associations": {
-        "so_long.h": "c"
+        "so_long.h": "c",
+        "*.tcc": "c",
+        "string": "c"
     }
 }

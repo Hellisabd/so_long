@@ -6,55 +6,64 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:38:33 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/14 17:38:30 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:19:05 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void    set_walls(t_lo *g)
+void	aff_all(t_lo *g, int x, int y)
 {
-	int	pos_x;
-	int	pos_y;
+	while (g->map[g->y][g->x])
+	{
+		if (g->map[g->y][g->x] == '1')
+			if (-1 == mlx_image_to_window(g->mlx, g->sprite.wall, x, y))
+				exit ((destroy_all(g), ft_printf("Error\nimage to window\n", 1)));
+		if (g->map[g->y][g->x] == 'P')
+			if (-1 == mlx_image_to_window(g->mlx, g->sprite.player, x, y))
+				exit ((destroy_all(g), ft_printf("Error\nimage to window\n", 1)));
+		if (g->map[g->y][g->x] == 'S')
+			if (-1 == mlx_image_to_window(g->mlx, g->sprite.c1, x, y))
+				exit ((destroy_all(g), ft_printf("Error\nimage to window\n", 1)));
+		if (g->map[g->y][g->x] == 'W')
+			if (-1 == mlx_image_to_window(g->mlx, g->sprite.c2, x, y))
+				exit ((destroy_all(g), ft_printf("Error\nimage to window\n", 1)));
+		if (g->map[g->y][g->x] == 'J')
+			if (-1 == mlx_image_to_window(g->mlx, g->sprite.c3, x, y))
+				exit ((destroy_all(g), ft_printf("Error\nimage to window\n", 1)));
+		if (g->map[g->y][g->x] == 'D')
+			if (-1 == mlx_image_to_window(g->mlx, g->sprite.ennemies, x, y))
+				exit ((destroy_all(g), ft_printf("Error\nimage to window\n", 1)));
+		x += g->size_block_x;
+		g->x++;
+	}
+}
+
+void	set_walls(t_lo *g)
+{
+	int		pos_x;
+	int		pos_y;
+	char	*str;
 
 	pos_y = 0;
 	g->y = 0;
 	g->sprite.wall_t = mlx_load_png("assets/blue_c.png");
 	if (!g->sprite.wall_t)
-        exit ((ft_printf("Error loading PNG\n"), EXIT_FAILURE));
+		exit ((ft_printf("Error\nloading PNG\n"), EXIT_FAILURE));
 	g->sprite.wall = mlx_texture_to_image(g->mlx, g->sprite.wall_t);
 	if (!g->sprite.wall)
-		exit((ft_printf("Error during loading texture to image\n"), EXIT_FAILURE));
-	if (!mlx_resize_image(g->sprite.wall,  g->size_block_x, g->size_block_y))
-        exit ((ft_printf("Error resizing walls\n"), EXIT_FAILURE));
+		exit((ft_printf("Error\nloading texture to image\n"), EXIT_FAILURE));
+	if (!mlx_resize_image(g->sprite.wall, g->size_block_x, g->size_block_y))
+		exit ((ft_printf("Error resizing walls\n"), EXIT_FAILURE));
 	while (g->map[g->y])
 	{
 		g->x = 0;
 		pos_x = 0;
-		while (g->map[g->y][g->x])
-		{
-			if (g->map[g->y][g->x] == '1')
-				if (-1 == mlx_image_to_window(g->mlx, g->sprite.wall, pos_x, pos_y))
-					exit ((destroy_all(g), ft_printf("Error during passing image to window\n", 1)));
-			if (g->map[g->y][g->x] == 'P')
-			    if (-1 == mlx_image_to_window(g->mlx, g->sprite.player, pos_x, pos_y))
-        			exit ((destroy_all(g), ft_printf("Error during passing image to window\n", 1)));
-			if (g->map[g->y][g->x] == 'S')
-			    if (-1 == mlx_image_to_window(g->mlx, g->sprite.c1, pos_x, pos_y))
-        			exit ((destroy_all(g), ft_printf("Error during passing image to window\n", 1)));
-			if (g->map[g->y][g->x] == 'W')
-			    if (-1 == mlx_image_to_window(g->mlx, g->sprite.c2, pos_x, pos_y))
-        			exit ((destroy_all(g), ft_printf("Error during passing image to window\n", 1)));
-			if (g->map[g->y][g->x] == 'J')
-			    if (-1 == mlx_image_to_window(g->mlx, g->sprite.c3, pos_x, pos_y))
-        			exit ((destroy_all(g), ft_printf("Error during passing image to window\n", 1)));
-			if (g->map[g->y][g->x] == 'D')
-			    if (-1 == mlx_image_to_window(g->mlx, g->sprite.ennemies, pos_x, pos_y))
-        			exit ((destroy_all(g), ft_printf("Error during passing image to window\n", 1)));
-			pos_x += g->size_block_x;
-			g->x++;
-		}
+		aff_all(g, pos_x, pos_y);
 		g->y++;
 		pos_y += g->size_block_y;
 	}
+	str = ft_itoa(g->count_move);
+	g->str_screen = mlx_put_string(g->mlx, str, 0, 0);
+	free (str);
 }
