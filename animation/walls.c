@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:38:33 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/15 10:19:05 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:01:46 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	set_walls(t_lo *g)
 		g->y++;
 		pos_y += g->size_block_y;
 	}
-	str = ft_itoa(g->count_move);
+	str = ft_itoa(g->score.count_move);
 	g->str_screen = mlx_put_string(g->mlx, str, 0, 0);
 	free (str);
 }

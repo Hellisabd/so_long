@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:16:44 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/15 17:24:38 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:35:35 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,10 @@ void	set_exit(t_lo *g);
 void	aff_exit(t_lo *g);
 void    set_score1(t_lo *g);
 void    aff_score(t_lo *g);
+void	delete_digit(t_lo *g);
+void    aff_first(t_lo *g, char c, int x);
+void    aff_second(t_lo *g, char c, int x);
+void    aff_third(t_lo *g, char c, int x);
 
 //Secrets
 

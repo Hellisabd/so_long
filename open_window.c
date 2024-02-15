@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:39:25 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/15 16:31:39 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:01:36 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	move2(t_lo *g, struct mlx_key_data key)
 {
-	char	*str;
 
 	if (key.key == MLX_KEY_A && key.action == 1 && check_collosion_left(g))
 	{
@@ -33,7 +32,6 @@ void	move2(t_lo *g, struct mlx_key_data key)
 void	move(struct mlx_key_data key, void	*param)
 {
 	t_lo	*g;
-	char	*str;
 
 	g = param;
 	g->data_p.player_pos_x = g->sprite.player->instances[0].x;
