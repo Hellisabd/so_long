@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:39:25 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/15 18:01:36 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/16 09:56:52 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,12 @@ void	ft_hook(void *param)
 	t_lo	*g;
 
 	g = param;
+	g->time += g->mlx->delta_time;
+	if(g->time > 0.03)
+	{
+		refresh(g);
+		g->time = 0;
+	}
 	g->data_p.player_pos_y = g->sprite.player->instances[0].y;
 	g->data_p.player_pos_x = g->sprite.player->instances[0].x;
 	if (mlx_is_key_down(g->mlx, MLX_KEY_ESCAPE))

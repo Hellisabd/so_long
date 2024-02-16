@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 09:59:59 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/15 18:01:23 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/16 09:36:37 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_lo	lvl_def(char *file, t_lo game)
 	game.coll = 0;
 	game.x = 0;
 	game.y = 0;
+	game.time = 0;
 	game.score.count_move = 0;
 	game.map = NULL;
 	game.time = 2147483647;

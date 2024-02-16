@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:16:44 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/15 18:35:35 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/16 09:35:21 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ typedef struct s_lo
 	mlx_image_t	*str_screen;
 	t_del		del;
 	int			count_coll;
-	int			time;
+	double			time;
 	int			success;
 }	t_lo;
 

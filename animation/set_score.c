@@ -6,28 +6,11 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 16:13:32 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/15 18:44:36 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/16 09:34:06 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-void    resize_score(t_lo *g)
-{
-	float	m;
-
-	m = 1.818181818;
-	mlx_resize_image(g->score.s0, WIDTH / 45, (WIDTH / 45 / m));
-	mlx_resize_image(g->score.s1, WIDTH / 45, (WIDTH / 45 / m));
-	mlx_resize_image(g->score.s2, WIDTH / 45, (WIDTH / 45 / m));
-	mlx_resize_image(g->score.s3, WIDTH / 45, (WIDTH / 45 / m));
-	mlx_resize_image(g->score.s4, WIDTH / 45, (WIDTH / 45 / m));
-	mlx_resize_image(g->score.s5, WIDTH / 45, (WIDTH / 45 / m));
-	mlx_resize_image(g->score.s6, WIDTH / 45, (WIDTH / 45 / m));
-	mlx_resize_image(g->score.s7, WIDTH / 45, (WIDTH / 45 / m));
-	mlx_resize_image(g->score.s8, WIDTH / 45, (WIDTH / 45 / m));
-	mlx_resize_image(g->score.s9, WIDTH / 45, (WIDTH / 45 / m));
-}
 
 void	score_img(t_lo *g)
 {
@@ -70,7 +53,6 @@ void    aff_score(t_lo *g)
 	
 	str = ft_itoa(g->score.count_move);
 	size = ft_strlen(str);
-	ft_printf("str : %s\n size :%d\n", str, size);
 	if (size == 1)
 	{
 		delete_digit(g);
