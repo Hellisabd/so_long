@@ -6,38 +6,96 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 13:00:43 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/16 16:11:26 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:29:46 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	set_lunette(t_lo *g)
+void	set_sword3(t_lo *g)
 {
-	g->lun.tab_t[0] = mlx_load_png("assets/lunettes_coll.png");
-	if (!g->lun.tab_t[0])
+	g->sword.tab_t[6] = mlx_load_png("assets/sword7.png");
+	if (!g->sword.tab_t[6])
 		exit ((ft_printf("Error loading speed PNG\n"), EXIT_FAILURE));
-	g->lun.tab[0] = mlx_texture_to_image(g->mlx, g->lun.tab_t[0]);
-	if (!g->lun.tab_t[0])
+	g->sword.tab[6] = mlx_texture_to_image(g->mlx, g->sword.tab_t[6]);
+	if (!g->sword.tab_t[6])
 		exit((ft_printf("Error\nloading texture to image\n"), EXIT_FAILURE));
-	if (!mlx_resize_image(g->lun.tab[0], g->size_block_x, g->size_block_y))
+	if (!mlx_resize_image(g->sword.tab[6], g->size_block_x, g->size_block_y))
 		exit ((ft_printf("Error\nresizing collectible\n"), EXIT_FAILURE));
-	g->lun.tab_t[1] = mlx_load_png("assets/lunettes_coll1.png");
-	if (!g->lun.tab_t[1])
+	g->sword.tab_t[7] = mlx_load_png("assets/sword8.png");
+	if (!g->sword.tab_t[7])
 		exit ((ft_printf("Error loading speed PNG\n"), EXIT_FAILURE));
-	g->lun.tab[1] = mlx_texture_to_image(g->mlx, g->lun.tab_t[0]);
-	if (!g->lun.tab_t[1])
+	g->sword.tab[7] = mlx_texture_to_image(g->mlx, g->sword.tab_t[7]);
+	if (!g->sword.tab_t[7])
 		exit((ft_printf("Error\nloading texture to image\n"), EXIT_FAILURE));
-	if (!mlx_resize_image(g->lun.tab[1], g->size_block_x, g->size_block_y))
+	if (!mlx_resize_image(g->sword.tab[7], g->size_block_x, g->size_block_y))
 		exit ((ft_printf("Error\nresizing collectible\n"), EXIT_FAILURE));
-	g->lun.tab_t[2] = mlx_load_png("assets/lunettes_coll2.png");
-	if (!g->lun.tab_t[2])
+	g->sword.tab_t[8] = mlx_load_png("assets/sword9.png");
+	if (!g->sword.tab_t[8])
 		exit ((ft_printf("Error loading speed PNG\n"), EXIT_FAILURE));
-	g->lun.tab[2] = mlx_texture_to_image(g->mlx, g->lun.tab_t[0]);
-	if (!g->lun.tab_t[2])
+	g->sword.tab[8] = mlx_texture_to_image(g->mlx, g->sword.tab_t[8]);
+	if (!g->sword.tab_t[8])
 		exit((ft_printf("Error\nloading texture to image\n"), EXIT_FAILURE));
-	if (!mlx_resize_image(g->lun.tab[0], g->size_block_x, g->size_block_y))
+	if (!mlx_resize_image(g->sword.tab[8], g->size_block_x, g->size_block_y))
 		exit ((ft_printf("Error\nresizing collectible\n"), EXIT_FAILURE));
+}
+
+void	set_sword2(t_lo *g)
+{
+	g->sword.tab_t[3] = mlx_load_png("assets/sword4.png");
+	if (!g->sword.tab_t[3])
+		exit ((ft_printf("Error loading speed PNG\n"), EXIT_FAILURE));
+	g->sword.tab[3] = mlx_texture_to_image(g->mlx, g->sword.tab_t[3]);
+	if (!g->sword.tab_t[3])
+		exit((ft_printf("Error\nloading texture to image\n"), EXIT_FAILURE));
+	if (!mlx_resize_image(g->sword.tab[3], g->size_block_x, g->size_block_y))
+		exit ((ft_printf("Error\nresizing collectible\n"), EXIT_FAILURE));
+	g->sword.tab_t[4] = mlx_load_png("assets/sword5.png");
+	if (!g->sword.tab_t[4])
+		exit ((ft_printf("Error loading speed PNG\n"), EXIT_FAILURE));
+	g->sword.tab[4] = mlx_texture_to_image(g->mlx, g->sword.tab_t[4]);
+	if (!g->sword.tab_t[4])
+		exit((ft_printf("Error\nloading texture to image\n"), EXIT_FAILURE));
+	if (!mlx_resize_image(g->sword.tab[4], g->size_block_x, g->size_block_y))
+		exit ((ft_printf("Error\nresizing collectible\n"), EXIT_FAILURE));
+	g->sword.tab_t[5] = mlx_load_png("assets/sword6.png");
+	if (!g->sword.tab_t[5])
+		exit ((ft_printf("Error loading speed PNG\n"), EXIT_FAILURE));
+	g->sword.tab[5] = mlx_texture_to_image(g->mlx, g->sword.tab_t[5]);
+	if (!g->sword.tab_t[5])
+		exit((ft_printf("Error\nloading texture to image\n"), EXIT_FAILURE));
+	if (!mlx_resize_image(g->sword.tab[5], g->size_block_x, g->size_block_y))
+		exit ((ft_printf("Error\nresizing collectible\n"), EXIT_FAILURE));
+	set_sword3(g);
+}
+
+void	set_sword1(t_lo *g)
+{
+	g->sword.tab_t[0] = mlx_load_png("assets/sword1.png");
+	if (!g->sword.tab_t[0])
+		exit ((ft_printf("Error loading speed PNG\n"), EXIT_FAILURE));
+	g->sword.tab[0] = mlx_texture_to_image(g->mlx, g->sword.tab_t[0]);
+	if (!g->sword.tab_t[0])
+		exit((ft_printf("Error\nloading texture to image\n"), EXIT_FAILURE));
+	if (!mlx_resize_image(g->sword.tab[0], g->size_block_x, g->size_block_y))
+		exit ((ft_printf("Error\nresizing collectible\n"), EXIT_FAILURE));
+	g->sword.tab_t[1] = mlx_load_png("assets/sword2.png");
+	if (!g->sword.tab_t[1])
+		exit ((ft_printf("Error loading speed PNG\n"), EXIT_FAILURE));
+	g->sword.tab[1] = mlx_texture_to_image(g->mlx, g->sword.tab_t[1]);
+	if (!g->sword.tab_t[1])
+		exit((ft_printf("Error\nloading texture to image\n"), EXIT_FAILURE));
+	if (!mlx_resize_image(g->sword.tab[1], g->size_block_x, g->size_block_y))
+		exit ((ft_printf("Error\nresizing collectible\n"), EXIT_FAILURE));
+	g->sword.tab_t[2] = mlx_load_png("assets/sword3.png");
+	if (!g->sword.tab_t[2])
+		exit ((ft_printf("Error loading speed PNG\n"), EXIT_FAILURE));
+	g->sword.tab[2] = mlx_texture_to_image(g->mlx, g->sword.tab_t[2]);
+	if (!g->sword.tab_t[2])
+		exit((ft_printf("Error\nloading texture to image\n"), EXIT_FAILURE));
+	if (!mlx_resize_image(g->sword.tab[0], g->size_block_x, g->size_block_y))
+		exit ((ft_printf("Error\nresizing collectible\n"), EXIT_FAILURE));
+	set_sword2(g);
 }
 
 void	set_coll(t_lo *g)
@@ -50,7 +108,7 @@ void	set_coll(t_lo *g)
 		exit((ft_printf("Error\nloading texture to image\n"), EXIT_FAILURE));
 	if (!mlx_resize_image(g->sprite.c1, g->size_block_x, g->size_block_y))
 		exit ((ft_printf("Error resizing collectible\n"), EXIT_FAILURE));
-	set_lunette(g);
+	set_sword1(g);
 	g->sprite.c3_t = mlx_load_png("assets/green_c.png");
 	if (!g->sprite.c3_t)
 		exit ((ft_printf("Error\nloading speed PNG\n"), EXIT_FAILURE));
@@ -94,7 +152,7 @@ void	check_collectible(t_lo *g)
 	if (g->map[y][x] == 'e')
 	{
 		g->success = 1;
-		mlx_image_to_window(g->mlx, g->sprite.player, 1000, 1000);
+		mlx_image_to_window(g->mlx, g->sprite.success, 0, 0);
 	}
 	if (g->map[y][x] == 'D' && g->data_p.weapon == 0)
 	{

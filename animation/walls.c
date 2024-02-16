@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:38:33 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/16 15:29:48 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:10:07 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	aff_all(t_lo *g, int x, int y)
 				exit ((destroy_all(g), ft_printf("Error\nimage to window\n", 1)));
 		if (g->map[g->y][g->x] == 'W')
 		{
-			g->lun.x = x;
-			g->lun.y = y;
+			g->sword.x = x;
+			g->sword.y = y;
 		}
 		if (g->map[g->y][g->x] == 'J')
 			if (-1 == mlx_image_to_window(g->mlx, g->sprite.c3, x, y))

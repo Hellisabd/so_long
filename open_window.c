@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:39:25 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/16 15:20:17 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:34:40 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	open_window(t_lo *g)
 	set_walls(g);
 	set_score1(g);
 	set_exit(g);
-	// lunette_img(g);
+	set_success(g);
 	aff_score(g);
 	mlx_loop_hook(g->mlx, ft_hook, (void *)g);
 	mlx_loop(g->mlx);

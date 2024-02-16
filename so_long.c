@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 09:59:59 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/16 16:08:45 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:44:09 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ t_lo	lvl_def(char *file, t_lo game)
 	game.coll = 0;
 	game.x = 0;
 	game.y = 0;
-	game.lun.frame = 0;
+	game.sword.frame1 = 0;
+	game.sword.frame2 = 10;
     game.i = 2;
 	game.dir = 0;
 	game.frame = 0;
@@ -46,7 +47,7 @@ int	main(void)
 	char	*file0;
 	t_lo	g;
 
-	file0 = "map/map_file_2.ber";
+	file0 = "map/map_file.ber";
 	g = lvl_def(file0, g);
 	mlx_terminate(g.mlx);
 }

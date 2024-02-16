@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:16:44 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/16 15:33:33 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:34:20 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_sprite
 	mlx_texture_t	*c3_t;
 	mlx_texture_t	*exit_t;
 	mlx_texture_t	*ennemies_t;
+	mlx_texture_t	*success_t;
 	mlx_image_t		*background;
 	mlx_image_t		*player;
 	mlx_image_t		*player_w;
@@ -38,6 +39,7 @@ typedef struct s_sprite
 	mlx_image_t		*c1;
 	mlx_image_t		*c3;
 	mlx_image_t		*ennemies;
+	mlx_image_t		*success;
 }	t_sprite;
 
 typedef struct s_hidden
@@ -57,14 +59,15 @@ typedef struct s_del
 	int		y;
 }	t_del;
 
-typedef struct s_lunette
+typedef struct s_sword
 {
-	mlx_image_t		*tab[3];
-	mlx_texture_t	*tab_t[3];
-	int	frame;
+	mlx_image_t		*tab[9];
+	mlx_texture_t	*tab_t[9];
+	int	frame1;
+	int	frame2;
 	int	x;
 	int	y;
-}	t_lunette;
+}	t_sword;
 
 typedef struct s_data_p
 {
@@ -124,7 +127,7 @@ typedef struct s_lo
 	int			width;
 	t_data_p	data_p;
 	t_score		score;
-	t_lunette	lun;
+	t_sword		sword;
 	mlx_image_t	*str_screen;
 	t_del		del;
 	int			count_coll;
@@ -173,7 +176,8 @@ void	delete_digit(t_lo *g);
 void    aff_first(t_lo *g, char c, int x);
 void    aff_second(t_lo *g, char c, int x);
 void    aff_third(t_lo *g, char c, int x);
-void    lunette_img(t_lo *g);
+void    swords_img1(t_lo *g);
+void	set_success(t_lo *g);
 
 //Secrets
 

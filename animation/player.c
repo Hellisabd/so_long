@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:43:30 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/15 13:22:34 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:32:18 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	set_player(t_lo *g)
 {
-	g->sprite.player_t = mlx_load_png("assets/red_c.png");
+	g->sprite.player_t = mlx_load_png("assets/player.png");
 	if (!g->sprite.player_t)
 		exit ((ft_printf("Error loading PNG\n"), EXIT_FAILURE));
 	g->sprite.player = mlx_texture_to_image(g->mlx, g->sprite.player_t);
@@ -25,4 +25,14 @@ void	set_player(t_lo *g)
 	g->sprite.player_w_t = mlx_load_png("assets/player_weapon.png");
 	if (!g->sprite.player_w_t)
 		exit ((ft_printf("Error loading PNG\n"), EXIT_FAILURE));
+}
+
+void	set_success(t_lo *g)
+{
+	g->sprite.success_t = mlx_load_png("assets/success.png");
+	if (!g->sprite.success_t)
+		exit ((ft_printf("Error loading PNG\n"), EXIT_FAILURE));
+	g->sprite.success = mlx_texture_to_image(g->mlx, g->sprite.success_t);
+	if (!g->sprite.success)
+		exit((ft_printf("Error\nloading texture to image\n"), EXIT_FAILURE));
 }
