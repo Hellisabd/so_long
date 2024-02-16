@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 10:04:18 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/16 18:31:45 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/16 19:14:11 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void    swords(t_lo *g)
 void    refresh(t_lo *g)
 {
     g->frame++;
-    if ((g->data_p.weapon == 0) && (g->frame % 30) == 0)
+    if ((g->data_p.weapon == 0) && (g->frame % 10) == 0)
         swords(g);
     if (g->data_p.weapon == 1)
     {

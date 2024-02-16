@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:35:24 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/16 15:39:35 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/16 19:15:17 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	pat_ennemies(t_lo *g, int dir)
 	int	y;
 
 	x = g->en_x;
+	if (g->success == 1)
+		return (0);
 	y = g->en_y;
 	if (dir == 0 && (g->map[y - 1][x] == '1' /*|| g->map[y - 1][x] == 'W' || g->map[y - 1][x] == 'J' || g->map[y - 1][x] == 'E' || g->map[y - 1][x] == 'e' || g->map[y - 1][x] == 'S'*/))
 		return (1);
