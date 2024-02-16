@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:38:33 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/15 18:01:46 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/16 15:29:48 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,21 @@ void	aff_all(t_lo *g, int x, int y)
 			if (-1 == mlx_image_to_window(g->mlx, g->sprite.c1, x, y))
 				exit ((destroy_all(g), ft_printf("Error\nimage to window\n", 1)));
 		if (g->map[g->y][g->x] == 'W')
-			if (-1 == mlx_image_to_window(g->mlx, g->sprite.c2, x, y))
-				exit ((destroy_all(g), ft_printf("Error\nimage to window\n", 1)));
+		{
+			g->lun.x = x;
+			g->lun.y = y;
+		}
 		if (g->map[g->y][g->x] == 'J')
 			if (-1 == mlx_image_to_window(g->mlx, g->sprite.c3, x, y))
 				exit ((destroy_all(g), ft_printf("Error\nimage to window\n", 1)));
 		if (g->map[g->y][g->x] == 'D')
+		{
 			if (-1 == mlx_image_to_window(g->mlx, g->sprite.ennemies, x, y))
 				exit ((destroy_all(g), ft_printf("Error\nimage to window\n", 1)));
+			g->en_x = g->x;
+			g->en_y = g->y;
+			
+		}
 		x += g->size_block_x;
 		g->x++;
 	}
@@ -43,7 +50,6 @@ void	set_walls(t_lo *g)
 {
 	int		pos_x;
 	int		pos_y;
-	char	*str;
 
 	pos_y = 0;
 	g->y = 0;
@@ -63,7 +69,4 @@ void	set_walls(t_lo *g)
 		g->y++;
 		pos_y += g->size_block_y;
 	}
-	str = ft_itoa(g->score.count_move);
-	g->str_screen = mlx_put_string(g->mlx, str, 0, 0);
-	free (str);
 }

@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:16:44 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/16 09:35:21 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/16 15:33:33 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct s_sprite
 	mlx_texture_t	*player_w_t;
 	mlx_texture_t	*wall_t;
 	mlx_texture_t	*c1_t;
-	mlx_texture_t	*c2_t;
 	mlx_texture_t	*c3_t;
 	mlx_texture_t	*exit_t;
 	mlx_texture_t	*ennemies_t;
@@ -37,7 +36,6 @@ typedef struct s_sprite
 	mlx_image_t		*wall;
 	mlx_image_t		*exit;
 	mlx_image_t		*c1;
-	mlx_image_t		*c2;
 	mlx_image_t		*c3;
 	mlx_image_t		*ennemies;
 }	t_sprite;
@@ -58,6 +56,15 @@ typedef struct s_del
 	int		x;
 	int		y;
 }	t_del;
+
+typedef struct s_lunette
+{
+	mlx_image_t		*tab[3];
+	mlx_texture_t	*tab_t[3];
+	int	frame;
+	int	x;
+	int	y;
+}	t_lunette;
 
 typedef struct s_data_p
 {
@@ -112,15 +119,22 @@ typedef struct s_lo
 	int			e_y;
 	mlx_t		*mlx;
 	t_sprite	sprite;
+	int			frame;
 	int			height;
 	int			width;
 	t_data_p	data_p;
 	t_score		score;
+	t_lunette	lun;
 	mlx_image_t	*str_screen;
 	t_del		del;
 	int			count_coll;
 	double			time;
+	int			i;
 	int			success;
+	int			en_x;
+	int			en_y;
+	int			dir;
+	int			ennemies_alive;
 }	t_lo;
 
 typedef struct s_pars
@@ -159,6 +173,7 @@ void	delete_digit(t_lo *g);
 void    aff_first(t_lo *g, char c, int x);
 void    aff_second(t_lo *g, char c, int x);
 void    aff_third(t_lo *g, char c, int x);
+void    lunette_img(t_lo *g);
 
 //Secrets
 
@@ -173,5 +188,10 @@ bool	check_collosion_left(t_lo *g);
 bool	check_collosion_right(t_lo *g);
 bool	check_collosion_down(t_lo *g);
 void	set_ennemies(t_lo *g);
+int		pat_ennemies(t_lo *g, int dir);
+
+//ANIMATION
+
+void    refresh(t_lo *g);
 
 #endif

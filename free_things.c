@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:44:01 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/15 11:50:31 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/16 12:51:04 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	destroy_all(void *g1)
 	mlx_delete_image(g->mlx, g->sprite.wall);
 	mlx_delete_texture(g->sprite.c1_t);
 	mlx_delete_image(g->mlx, g->sprite.c1);
-	mlx_delete_texture(g->sprite.c2_t);
-	mlx_delete_image(g->mlx, g->sprite.c2);
+	// mlx_delete_texture(g->sprite.c2_t);
+	// mlx_delete_image(g->mlx, g->sprite.c2);
 	mlx_delete_texture(g->sprite.c3_t);
 	mlx_delete_image(g->mlx, g->sprite.c3);
 	mlx_delete_texture(g->sprite.ennemies_t);

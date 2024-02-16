@@ -25,7 +25,8 @@ SRCS	= 	map/parsing.c \
 			animation/exit.c \
 			animation/ennemies.c \
 			animation/set_score.c \
-			animation/aff_digit.c
+			animation/aff_digit.c \
+			animation/anim.c
 
 SRCS_MAIN	= so_long.c $(SRCS)
 

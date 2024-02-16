@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:39:25 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/16 09:56:52 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/16 15:20:17 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	move2(t_lo *g, struct mlx_key_data key)
 {
 
-	if (key.key == MLX_KEY_A && key.action == 1 && check_collosion_left(g))
+	if (key.key == MLX_KEY_A && key.action == 1 && check_collosion_left(g) && g->success == 0)
 	{
 		g->score.count_move++;
 		aff_score(g);
 		g->sprite.player->instances[0].x -= g->size_block_x;
 	}
-	if (key.key == MLX_KEY_D && key.action == 1 && check_collosion_right(g))
+	if (key.key == MLX_KEY_D && key.action == 1 && check_collosion_right(g) && g->success == 0)
 	{
 		g->score.count_move++;
 		aff_score(g);
@@ -36,18 +36,13 @@ void	move(struct mlx_key_data key, void	*param)
 	g = param;
 	g->data_p.player_pos_x = g->sprite.player->instances[0].x;
 	g->data_p.player_pos_y = g->sprite.player->instances[0].y;
-	if (key.key >= MLX_KEY_A && key.key <= MLX_KEY_Z)
-	{
-		if (g->success == 1)
-			mlx_close_window((ft_printf("SUCCESS"), g->mlx));
-	}
-	if (key.key == MLX_KEY_W && key.action == 1 && check_collosion_up(g))
+	if (key.key == MLX_KEY_W && key.action == 1 && check_collosion_up(g) && g->success == 0)
 	{
 		g->score.count_move++;
 		aff_score(g);
 		g->sprite.player->instances[0].y -= g->size_block_y;
 	}
-	if (key.key == MLX_KEY_S && key.action == 1 && check_collosion_down(g))
+	if (key.key == MLX_KEY_S && key.action == 1 && check_collosion_down(g) && g->success == 0)
 	{
 		g->score.count_move++;
 		aff_score(g);
@@ -93,6 +88,8 @@ void	open_window(t_lo *g)
 	set_walls(g);
 	set_score1(g);
 	set_exit(g);
+	// lunette_img(g);
+	aff_score(g);
 	mlx_loop_hook(g->mlx, ft_hook, (void *)g);
 	mlx_loop(g->mlx);
 	destroy_all(g);
