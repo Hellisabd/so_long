@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 10:04:18 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/16 17:17:41 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/16 18:31:45 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void    swords_img1(t_lo *g)
     g->sword.tab[3] = mlx_texture_to_image(g->mlx, g->sword.tab_t[3]);
 	if (!g->sword.tab[3])
 		exit((ft_printf("Error\nloading texture to image\n"), EXIT_FAILURE));
-	if (!mlx_resize_image(g->sword.tab[1], g->size_block_x, g->size_block_y))
+	if (!mlx_resize_image(g->sword.tab[3], g->size_block_x, g->size_block_y))
 		exit ((ft_printf("Error\nresizing collectible\n"), EXIT_FAILURE));
     g->sword.tab[4] = mlx_texture_to_image(g->mlx, g->sword.tab_t[4]);
 	if (!g->sword.tab[4])
@@ -91,6 +91,7 @@ void    swords(t_lo *g)
     if (i == 0)
     {
         g->sword.frame1++;
+        ft_printf("%d\n", g->sword.frame1);
         mlx_image_to_window(g->mlx, g->sword.tab[g->sword.frame1 - 1], g->sword.x, g->sword.y);
     }
     if (i == 1)
@@ -103,7 +104,7 @@ void    swords(t_lo *g)
 void    refresh(t_lo *g)
 {
     g->frame++;
-    if ((g->data_p.weapon == 0) && (g->frame % 4) == 0)
+    if ((g->data_p.weapon == 0) && (g->frame % 30) == 0)
         swords(g);
     if (g->data_p.weapon == 1)
     {

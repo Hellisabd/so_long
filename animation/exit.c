@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 16:22:51 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/14 16:46:23 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/16 18:43:45 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void    set_exit(t_lo *g)
 {
-    g->sprite.exit_t = mlx_load_png("assets/pink_c.png");
+    g->sprite.exit_t = mlx_load_png("assets/exit.png");
     if (!g->sprite.exit_t)
         exit ((ft_printf("Error loading PNG\n"), EXIT_FAILURE));
     g->sprite.exit = mlx_texture_to_image(g->mlx, g->sprite.exit_t);
