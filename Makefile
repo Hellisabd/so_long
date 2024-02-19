@@ -26,7 +26,8 @@ SRCS	= 	map/parsing.c \
 			animation/ennemies.c \
 			animation/set_score.c \
 			animation/aff_digit.c \
-			animation/anim.c
+			animation/anim.c	\
+			animation/player_death.c
 
 SRCS_MAIN	= so_long.c $(SRCS)
 
@@ -34,7 +35,7 @@ OBJS	= $(SRCS_MAIN:.c=.o)
 
 CC	= @gcc
 
-CFLAGS	+= -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS	+= -Wall -Wextra -Werror -g3 #-fsanitize=address
 
 RM	= @rm -rf
 

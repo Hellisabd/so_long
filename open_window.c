@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:39:25 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/16 17:34:40 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:47:39 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_hook(void *param)
 
 	g = param;
 	g->time += g->mlx->delta_time;
-	if(g->time > 0.03)
+	if (g->time > 0.03)
 	{
 		refresh(g);
 		g->time = 0;
@@ -90,6 +90,7 @@ void	open_window(t_lo *g)
 	set_exit(g);
 	set_success(g);
 	aff_score(g);
+	init_death(g);
 	mlx_loop_hook(g->mlx, ft_hook, (void *)g);
 	mlx_loop(g->mlx);
 	destroy_all(g);

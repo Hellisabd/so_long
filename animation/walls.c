@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:38:33 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/16 17:10:07 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:13:28 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	set_walls(t_lo *g)
 
 	pos_y = 0;
 	g->y = 0;
-	g->sprite.wall_t = mlx_load_png("assets/blue_c.png");
+	g->sprite.wall_t = mlx_load_png("assets/wall.png");
 	if (!g->sprite.wall_t)
 		exit ((ft_printf("Error\nloading PNG\n"), EXIT_FAILURE));
 	g->sprite.wall = mlx_texture_to_image(g->mlx, g->sprite.wall_t);

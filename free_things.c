@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:44:01 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/16 18:18:47 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:21:05 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,17 @@ void	destroy_all(void *g1)
 	mlx_delete_texture(g->score.s7_t);
 	mlx_delete_texture(g->score.s8_t);
 	mlx_delete_texture(g->score.s9_t);
+	delete_death(g, 30);
+}
+
+void	delete_death(t_lo *g, int i)
+{
+	printf("%d", i);
+	while (i)
+	{
+		mlx_delete_texture(g->death.tab_t[i - 1]);
+		mlx_delete_image(g->mlx, g->death.tab[i - 1]);
+		i--;
+	}
+	printf("%d", i);
 }

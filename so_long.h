@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:16:44 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/16 17:34:20 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:16:12 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,24 +59,39 @@ typedef struct s_del
 	int		y;
 }	t_del;
 
+typedef struct s_death
+{
+	mlx_image_t		*tab[30];
+	mlx_texture_t	*tab_t[30];
+	int				x;
+	int				y;
+	int				death;
+	int				frame;
+	mlx_image_t		*d_screen;
+	mlx_texture_t	*d_screen_t;
+}	t_death;
+
 typedef struct s_sword
 {
 	mlx_image_t		*tab[9];
 	mlx_texture_t	*tab_t[9];
-	int	frame1;
-	int	frame2;
-	int	x;
-	int	y;
+	int				frame1;
+	int				frame2;
+	int				x;
+	int				y;
 }	t_sword;
 
 typedef struct s_data_p
 {
-	int32_t	player_pos_y;
-	int32_t	player_pos_x;
-	int32_t	player_size_x;
-	int32_t	player_size_y;
-	int		p_speed;
-	int		weapon;
+	int32_t			player_pos_y;
+	int32_t			player_pos_x;
+	int32_t			player_size_x;
+	int32_t			player_size_y;
+	int				p_speed;
+	int				weapon;
+	int				sword;
+	mlx_image_t		*tab[9];
+	mlx_texture_t	*tab_t[9];
 }	t_data_p;
 
 typedef struct s_score
@@ -131,13 +146,14 @@ typedef struct s_lo
 	mlx_image_t	*str_screen;
 	t_del		del;
 	int			count_coll;
-	double			time;
+	double		time;
 	int			i;
 	int			success;
 	int			en_x;
 	int			en_y;
 	int			dir;
-	int			ennemies_alive;
+	int			ennemie1_alive;
+	t_death		death;
 }	t_lo;
 
 typedef struct s_pars
@@ -178,10 +194,12 @@ void    aff_second(t_lo *g, char c, int x);
 void    aff_third(t_lo *g, char c, int x);
 void    swords_img1(t_lo *g);
 void	set_success(t_lo *g);
+void	init_death(t_lo *g);
 
 //Secrets
 
 int		integr_coll(t_lo *g);
+void	delete_death(t_lo *g, int i);
 
 //COLLISIONS
 
@@ -192,10 +210,11 @@ bool	check_collosion_left(t_lo *g);
 bool	check_collosion_right(t_lo *g);
 bool	check_collosion_down(t_lo *g);
 void	set_ennemies(t_lo *g);
-int		pat_ennemies(t_lo *g, int dir);
+int		pat_ennemies1(t_lo *g, int dir);
 
 //ANIMATION
 
 void    refresh(t_lo *g);
+void	player_death(t_lo *g);
 
 #endif

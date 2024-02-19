@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 10:04:18 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/16 19:14:11 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/19 17:15:21 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void    swords(t_lo *g)
     if (i == 0)
     {
         g->sword.frame1++;
-        ft_printf("%d\n", g->sword.frame1);
+        // ft_printf("%d\n", g->sword.frame1);
         mlx_image_to_window(g->mlx, g->sword.tab[g->sword.frame1 - 1], g->sword.x, g->sword.y);
     }
     if (i == 1)
@@ -104,9 +104,9 @@ void    swords(t_lo *g)
 void    refresh(t_lo *g)
 {
     g->frame++;
-    if ((g->data_p.weapon == 0) && (g->frame % 10) == 0)
+    if ((g->data_p.sword == 0) && (g->frame % 10) == 0 && g->death.death == 0)
         swords(g);
-    if (g->data_p.weapon == 1)
+    if (g->data_p.sword == 1 && g->death.death == 0)
     {
         mlx_delete_image(g->mlx, g->sword.tab[0]);
         mlx_delete_image(g->mlx, g->sword.tab[1]);
@@ -118,6 +118,15 @@ void    refresh(t_lo *g)
         mlx_delete_image(g->mlx, g->sword.tab[7]);
         mlx_delete_image(g->mlx, g->sword.tab[8]);
     }
-    if (g->frame % 1 == 0 && g->ennemies_alive == 1)
-        g->dir = pat_ennemies(g, g->dir);
+    if (g->frame % 1 == 0 && g->ennemie1_alive == 1 && g->death.death == 0)
+        g->dir = pat_ennemies1(g, g->dir);
+    // if (g->frame % 4 == 0)
+    //     static_player_anim(g);
+    // if (g->frame % 8 && g->data_p.h_w == 1)
+    //     empowered_player(g);
+    if (g->death.death == 1 && g->frame % 3 == 0)
+    {
+        mlx_image_to_window(g->mlx, g->death.d_screen, 0, 0);
+        player_death(g);
+    }
 }

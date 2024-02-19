@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 13:00:43 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/16 18:30:21 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:44:45 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	set_sword1(t_lo *g)
 
 void	set_coll(t_lo *g)
 {
-	g->sprite.c1_t = mlx_load_png("assets/yellow_c.png");
+	g->sprite.c1_t = mlx_load_png("assets/holy_water.png");
 	if (!g->sprite.c1_t)
 		exit ((ft_printf("Error\nloading speed PNG\n"), EXIT_FAILURE));
 	g->sprite.c1 = mlx_texture_to_image(g->mlx, g->sprite.c1_t);
@@ -109,7 +109,7 @@ void	set_coll(t_lo *g)
 	if (!mlx_resize_image(g->sprite.c1, g->size_block_x, g->size_block_y))
 		exit ((ft_printf("Error resizing collectible\n"), EXIT_FAILURE));
 	set_sword1(g);
-	g->sprite.c3_t = mlx_load_png("assets/green_c.png");
+	g->sprite.c3_t = mlx_load_png("assets/key.png");
 	if (!g->sprite.c3_t)
 		exit ((ft_printf("Error\nloading speed PNG\n"), EXIT_FAILURE));
 	g->sprite.c3 = mlx_texture_to_image(g->mlx, g->sprite.c3_t);
@@ -130,11 +130,13 @@ void	check_collectible(t_lo *g)
 	{
 		mlx_delete_image((g->count_coll--, g->mlx), g->sprite.c1);
 		g->map[y][x] = '0';
+		g->data_p.weapon++;
 	}
 	if (g->map[y][x] == 'W')
 	{
 		g->map[y][x] = '0';
-		g->data_p.weapon = 1;
+		g->data_p.weapon += 1;
+		g->data_p.sword = 1;
 		g->count_coll--;
 		mlx_delete_image(g->mlx, g->sprite.player);
 		g->sprite.player = mlx_texture_to_image(g->mlx, g->sprite.player_w_t);
@@ -154,13 +156,15 @@ void	check_collectible(t_lo *g)
 		g->success = 1;
 		mlx_image_to_window(g->mlx, g->sprite.success, 0, 0);
 	}
-	if (g->map[y][x] == 'D' && g->data_p.weapon == 0)
+	if ((g->map[y][x] == 'D' && g->data_p.weapon != 2) || g->score.count_move >= 999)
 	{
-		mlx_close_window((ft_printf("You Died"), g->mlx));
+		g->death.death = 1;
+		// player_death(g);
+		// mlx_close_window((ft_printf("You Died"), g->mlx));
 	}
-	else if (g->map[y][x] == 'D' && g->data_p.weapon == 1)
+	else if (g->map[y][x] == 'D' && g->data_p.weapon == 2)
 	{
-		g->ennemies_alive = 0;
+		g->ennemie1_alive = 0;
 		mlx_delete_image(g->mlx, g->sprite.ennemies);
 	}
 }
