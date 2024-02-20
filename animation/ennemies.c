@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:35:24 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/20 17:06:05 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:07:10 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,16 @@ void	pat_ennemies1(t_lo *g)
 {
 	int	x;
 	int	y;
+	int	dir;
 
 	x = g->en_x;
 	dir = rand();
 	ft_printf("%d", dir % 4);
 	if (g->success == 1)
-		return (0);
+		return ;
 	y = g->en_y;
 	if (dir % 4 == 0 && (g->map[y - 1][x] == '1' || g->map[y - 1][x] == 'W' || g->map[y - 1][x] == 'J' || g->map[y - 1][x] == 'E' || g->map[y - 1][x] == 'e' || g->map[y - 1][x] == 'S'))
-		return (1);
+		return ;
 	else if (dir % 4 == 0)
 	{
 		g->map[y - 1][x] = 'D';
@@ -34,7 +35,7 @@ void	pat_ennemies1(t_lo *g)
 		g->sprite.ennemiesr->instances[0].y -= g->size_block_y;
 	}
 	if (dir % 4 == 1 && (g->map[y][x + 1] == '1' ||  g->map[y][x + 1] == 'W' || g->map[y][x + 1] == 'J' || g->map[y][x + 1] == 'E' || g->map[y][x + 1] == 'e' || g->map[y][x + 1] == 'S'))
-		return (2);
+		return ;
 	else if (dir % 4 == 1)
 	{
 		g->map[y][x + 1] = 'D';
@@ -46,7 +47,7 @@ void	pat_ennemies1(t_lo *g)
 		g->sprite.ennemiesl->instances->enabled = false;
 	}
 	if (dir % 4 == 2 && (g->map[y][x - 1] == '1' || g->map[y][x - 1] == 'W' || g->map[y][x - 1] == 'J' || g->map[y][x - 1] == 'E' || g->map[y][x - 1] == 'e' || g->map[y][x - 1] == 'S'))
-		return (3);
+		return ;
 	else if (dir % 4 == 2)
 	{
 		g->map[y][x - 1] = 'D';
@@ -58,7 +59,7 @@ void	pat_ennemies1(t_lo *g)
 		g->sprite.ennemiesr->instances->enabled = false;
 	}
 	if (dir % 4 == 3 && (g->map[y + 1][x] == '1' || g->map[y + 1][x] == 'W' || g->map[y + 1][x] == 'J' || g->map[y + 1][x] == 'E' || g->map[y + 1][x] == 'e' || g->map[y + 1][x] == 'S'))
-		return (0);
+		return ;
 	else if (dir % 4 == 3)
 	{
 		g->map[y + 1][x] = 'D';
@@ -67,7 +68,6 @@ void	pat_ennemies1(t_lo *g)
 		g->sprite.ennemiesr->instances[0].y += g->size_block_y;
 		g->sprite.ennemiesl->instances[0].y += g->size_block_y;
 	}
-	return (dir);
 }
 
 void	set_ennemies(t_lo *g)
