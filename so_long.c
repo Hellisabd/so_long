@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 09:59:59 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/20 16:47:11 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:19:03 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	main(void)
 	char	*file0;
 	t_lo	g;
 
-	file0 = "map/map_file_2.ber";
+	file0 = "map/map_file.ber";
 	g = lvl_def(file0, g);
 	mlx_terminate(g.mlx);
 }

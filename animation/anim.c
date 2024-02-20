@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 10:04:18 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/20 17:05:53 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:09:49 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void    refresh(t_lo *g)
 		mlx_delete_image(g->mlx, g->sword.tab[5]);
 		player_anim_w(g);
 	}
-	if (g->frame % 5 == 0 && g->ennemie1_alive == 1 && g->death.death == 0)
+	if (g->frame % 2 == 0 && g->ennemie1_alive == 1 && g->death.death == 0)
 		pat_ennemies1(g);
 	if (g->death.death == 1 && g->frame % 3 == 0)
 	{

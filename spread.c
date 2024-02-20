@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 09:54:00 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/07 11:44:49 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:23:55 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	spread_x(t_lo *g)
 {
 	if (g->map[g->y][g->x] == 'P' || g->map[g->y][g->x] == 'X')
 	{
-		if (g->map[g->y][g->x + 1] == '0' || g->map[g->y][g->x + 1] == 'C')
+		if (g->map[g->y][g->x + 1] == '0' || g->map[g->y][g->x + 1] == 'C' /*|| g->map[g->y][g->x + 1] == 'D'*/)
 			g->map[g->y][g->x + 1] = 'X';
-		if (g->map[g->y][g->x - 1] == '0' || g->map[g->y][g->x - 1] == 'C')
+		if (g->map[g->y][g->x - 1] == '0' || g->map[g->y][g->x - 1] == 'C' /*|| g->map[g->y][g->x - 1] == 'D'*/)
 			g->map[g->y][g->x - 1] = 'X';
-		if (g->map[g->y + 1][g->x] == '0' || g->map[g->y + 1][g->x] == 'C')
+		if (g->map[g->y + 1][g->x] == '0' || g->map[g->y + 1][g->x] == 'C' /*|| g->map[g->y - 1][g->x] == 'D'*/)
 			g->map[g->y + 1][g->x] = 'X';
-		if (g->map[g->y - 1][g->x] == '0' || g->map[g->y - 1][g->x] == 'C')
+		if (g->map[g->y - 1][g->x] == '0' || g->map[g->y - 1][g->x] == 'C' /*|| g->map[g->y + 1][g->x] == 'D'*/)
 			g->map[g->y - 1][g->x] = 'X';
 	}
 }
@@ -31,13 +31,13 @@ void	spread_y(t_lo *g)
 {
 	if (g->map[g->y][g->x] == 'E' || g->map[g->y][g->x] == 'Y')
 	{
-		if (g->map[g->y][g->x + 1] == '0' || g->map[g->y][g->x + 1] == 'C')
+		if (g->map[g->y][g->x + 1] == '0' || g->map[g->y][g->x + 1] == 'C' /*|| g->map[g->y][g->x + 1] == 'D'*/)
 			g->map[g->y][g->x + 1] = 'Y';
-		if (g->map[g->y][g->x - 1] == '0' || g->map[g->y][g->x - 1] == 'C')
+		if (g->map[g->y][g->x - 1] == '0' || g->map[g->y][g->x - 1] == 'C' /*|| g->map[g->y][g->x - 1] == 'D'*/)
 			g->map[g->y][g->x - 1] = 'Y';
-		if (g->map[g->y + 1][g->x] == '0' || g->map[g->y + 1][g->x] == 'C')
+		if (g->map[g->y + 1][g->x] == '0' || g->map[g->y + 1][g->x] == 'C' /*|| g->map[g->y + 1][g->x] == 'D'*/)
 			g->map[g->y + 1][g->x] = 'Y';
-		if (g->map[g->y - 1][g->x] == '0' || g->map[g->y - 1][g->x] == 'C')
+		if (g->map[g->y - 1][g->x] == '0' || g->map[g->y - 1][g->x] == 'C' /*|| g->map[g->y - 1][g->x] == 'D'*/)
 			g->map[g->y - 1][g->x] = 'Y';
 	}
 }
