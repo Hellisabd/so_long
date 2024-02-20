@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:18:55 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/19 17:14:41 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:30:39 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,15 +200,76 @@ void	init_death(t_lo *g)
 	g->death.d_screen = mlx_texture_to_image(g->mlx, g->death.d_screen_t);
 	if (!g->death.d_screen)
 		exit((ft_printf("Error\nloading texture to image\n"), EXIT_FAILURE));
+	mlx_image_to_window(g->mlx, g->death.d_screen, 0, 0);
+	g->death.d_screen->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[0], 750, 750);
+		g->death.tab[0]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[1], 750, 750);
+		g->death.tab[1]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[2], 750, 750);
+		g->death.tab[2]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[3], 750, 750);
+		g->death.tab[3]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[4], 750, 750);
+		g->death.tab[4]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[5], 750, 750);
+		g->death.tab[5]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[6], 750, 750);
+		g->death.tab[6]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[7], 750, 750);
+		g->death.tab[7]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[8], 750, 750);
+		g->death.tab[8]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[9], 750, 750);
+		g->death.tab[9]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[10], 750, 750);
+		g->death.tab[10]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[11], 750, 750);
+		g->death.tab[11]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[12], 750, 750);
+		g->death.tab[12]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[13], 750, 750);
+		g->death.tab[13]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[14], 750, 750);
+		g->death.tab[14]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[15], 750, 750);
+		g->death.tab[15]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[16], 750, 750);
+		g->death.tab[16]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[17], 750, 750);
+		g->death.tab[17]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[18], 750, 750);
+		g->death.tab[18]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[19], 750, 750);
+		g->death.tab[19]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[20], 750, 750);
+		g->death.tab[20]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[21], 750, 750);
+		g->death.tab[21]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[22], 750, 750);
+		g->death.tab[22]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[23], 750, 750);
+		g->death.tab[23]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[24], 750, 750);
+		g->death.tab[24]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[25], 750, 750);
+		g->death.tab[25]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[26], 750, 750);
+		g->death.tab[26]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[27], 750, 750);
+		g->death.tab[27]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[28], 750, 750);
+		g->death.tab[28]->instances->enabled = false;
+	mlx_image_to_window(g->mlx, g->death.tab[29], 750, 750);
+		g->death.tab[29]->instances->enabled = false;
 }
 
 void	player_death(t_lo *g)
 {
+	g->death.tab[g->death.frame]->instances->enabled = true;
 	if (g->death.frame > 0)
-		mlx_delete_image(g->mlx, g->death.tab[g->death.frame - 1]);
-	mlx_image_to_window(g->mlx, g->death.tab[g->death.frame], 750, 750);
+		g->death.tab[g->death.frame - 1]->instances->enabled = false;
 	g->death.frame++;
-	// ft_printf("%d\n", g->death.frame);
 	if (g->death.frame == 30)
 	{
 		usleep(5000000);

@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:16:44 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/19 16:16:12 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:34:46 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ typedef struct s_sprite
 	mlx_texture_t	*c1_t;
 	mlx_texture_t	*c3_t;
 	mlx_texture_t	*exit_t;
-	mlx_texture_t	*ennemies_t;
+	mlx_texture_t	*ennemiesr_t;
+	mlx_texture_t	*ennemiesl_t;
 	mlx_texture_t	*success_t;
 	mlx_image_t		*background;
 	mlx_image_t		*player;
@@ -38,6 +39,8 @@ typedef struct s_sprite
 	mlx_image_t		*exit;
 	mlx_image_t		*c1;
 	mlx_image_t		*c3;
+	mlx_image_t		*ennemiesr;
+	mlx_image_t		*ennemiesl;
 	mlx_image_t		*ennemies;
 	mlx_image_t		*success;
 }	t_sprite;
@@ -90,8 +93,11 @@ typedef struct s_data_p
 	int				p_speed;
 	int				weapon;
 	int				sword;
-	mlx_image_t		*tab[9];
-	mlx_texture_t	*tab_t[9];
+	mlx_image_t		*tab[6];
+	mlx_texture_t	*tab_t[6];
+	mlx_image_t		*tab_w[6];
+	mlx_texture_t	*tab_w_t[6];
+	int				frame;
 }	t_data_p;
 
 typedef struct s_score
@@ -195,6 +201,12 @@ void    aff_third(t_lo *g, char c, int x);
 void    swords_img1(t_lo *g);
 void	set_success(t_lo *g);
 void	init_death(t_lo *g);
+void	aff_player(t_lo *g, int x, int y);
+void	aff_player_w(t_lo *g, int x, int y);
+void	player_anim(t_lo *g);
+void	player_anim_w(t_lo *g);
+void	set_player_w(t_lo *g);
+void    move_player(t_lo *g, int dir);
 
 //Secrets
 

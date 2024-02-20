@@ -6,11 +6,13 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:38:33 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/19 13:13:28 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/20 14:59:54 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+
 
 void	aff_all(t_lo *g, int x, int y)
 {
@@ -20,13 +22,15 @@ void	aff_all(t_lo *g, int x, int y)
 			if (-1 == mlx_image_to_window(g->mlx, g->sprite.wall, x, y))
 				exit ((destroy_all(g), ft_printf("Error\nimage to window\n", 1)));
 		if (g->map[g->y][g->x] == 'P')
-			if (-1 == mlx_image_to_window(g->mlx, g->sprite.player, x, y))
-				exit ((destroy_all(g), ft_printf("Error\nimage to window\n", 1)));
+		{
+			aff_player(g, x, y);
+		}
 		if (g->map[g->y][g->x] == 'S')
 			if (-1 == mlx_image_to_window(g->mlx, g->sprite.c1, x, y))
 				exit ((destroy_all(g), ft_printf("Error\nimage to window\n", 1)));
 		if (g->map[g->y][g->x] == 'W')
 		{
+			aff_player_w(g, x, y);
 			g->sword.x = x;
 			g->sword.y = y;
 		}
@@ -35,8 +39,11 @@ void	aff_all(t_lo *g, int x, int y)
 				exit ((destroy_all(g), ft_printf("Error\nimage to window\n", 1)));
 		if (g->map[g->y][g->x] == 'D')
 		{
-			if (-1 == mlx_image_to_window(g->mlx, g->sprite.ennemies, x, y))
+			if (-1 == mlx_image_to_window(g->mlx, g->sprite.ennemiesr, x, y))
 				exit ((destroy_all(g), ft_printf("Error\nimage to window\n", 1)));
+			if (-1 == mlx_image_to_window(g->mlx, g->sprite.ennemiesl, x, y))
+				exit ((destroy_all(g), ft_printf("Error\nimage to window\n", 1)));
+			g->sprite.ennemiesl->instances->enabled = false;
 			g->en_x = g->x;
 			g->en_y = g->y;
 			

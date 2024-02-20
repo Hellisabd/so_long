@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 13:00:43 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/19 15:44:45 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:52:29 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,6 @@ void	set_sword2(t_lo *g)
 		exit((ft_printf("Error\nloading texture to image\n"), EXIT_FAILURE));
 	if (!mlx_resize_image(g->sword.tab[4], g->size_block_x, g->size_block_y))
 		exit ((ft_printf("Error\nresizing collectible\n"), EXIT_FAILURE));
-	g->sword.tab_t[5] = mlx_load_png("assets/sword6.png");
-	if (!g->sword.tab_t[5])
-		exit ((ft_printf("Error loading speed PNG\n"), EXIT_FAILURE));
-	g->sword.tab[5] = mlx_texture_to_image(g->mlx, g->sword.tab_t[5]);
-	if (!g->sword.tab_t[5])
-		exit((ft_printf("Error\nloading texture to image\n"), EXIT_FAILURE));
-	if (!mlx_resize_image(g->sword.tab[5], g->size_block_x, g->size_block_y))
-		exit ((ft_printf("Error\nresizing collectible\n"), EXIT_FAILURE));
-	set_sword3(g);
 }
 
 void	set_sword1(t_lo *g)
@@ -126,6 +117,7 @@ void	check_collectible(t_lo *g)
 
 	x = (int)round(g->data_p.player_pos_x / (WIDTH / (g->width - 1)));
 	y = (int)round(g->data_p.player_pos_y / (HEIGHT / g->height));
+	// ft_printf("x : %d\ny : %d\n", x, y);
 	if (g->map[y][x] == 'S')
 	{
 		mlx_delete_image((g->count_coll--, g->mlx), g->sprite.c1);
@@ -138,13 +130,13 @@ void	check_collectible(t_lo *g)
 		g->data_p.weapon += 1;
 		g->data_p.sword = 1;
 		g->count_coll--;
-		mlx_delete_image(g->mlx, g->sprite.player);
-		g->sprite.player = mlx_texture_to_image(g->mlx, g->sprite.player_w_t);
-		if (!g->sprite.player)
-			exit((ft_printf("Error\nloading texture to image\n"), EXIT_FAILURE));
-		if (!mlx_resize_image(g->sprite.player, g->size_block_x, g->size_block_y))
-			exit ((ft_printf("Error resizing player\n"), EXIT_FAILURE));
-		mlx_image_to_window(g->mlx, g->sprite.player, g->data_p.player_pos_x, g->data_p.player_pos_y);
+		g->data_p.tab[0]->instances->enabled = false;
+		g->data_p.tab[1]->instances->enabled = false;
+		g->data_p.tab[2]->instances->enabled = false;
+		g->data_p.tab[3]->instances->enabled = false;
+		g->data_p.tab[4]->instances->enabled = false;
+		g->data_p.tab[5]->instances->enabled = false;
+		g->data_p.tab_w[g->data_p.frame]->instances->enabled = true;
 	}
 	if (g->map[y][x] == 'J')
 	{
@@ -165,7 +157,8 @@ void	check_collectible(t_lo *g)
 	else if (g->map[y][x] == 'D' && g->data_p.weapon == 2)
 	{
 		g->ennemie1_alive = 0;
-		mlx_delete_image(g->mlx, g->sprite.ennemies);
+		mlx_delete_image(g->mlx, g->sprite.ennemiesl);
+		mlx_delete_image(g->mlx, g->sprite.ennemiesr);
 	}
 }
 

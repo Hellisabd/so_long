@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:39:25 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/19 15:47:39 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:45:42 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void	move2(t_lo *g, struct mlx_key_data key)
 	{
 		g->score.count_move++;
 		aff_score(g);
-		g->sprite.player->instances[0].x -= g->size_block_x;
+		move_player(g, 2);
 	}
 	if (key.key == MLX_KEY_D && key.action == 1 && check_collosion_right(g) && g->success == 0)
 	{
 		g->score.count_move++;
 		aff_score(g);
-		g->sprite.player->instances[0].x += g->size_block_x;
+		move_player(g, 1);
 	}
 }
 
@@ -34,19 +34,28 @@ void	move(struct mlx_key_data key, void	*param)
 	t_lo	*g;
 
 	g = param;
-	g->data_p.player_pos_x = g->sprite.player->instances[0].x;
-	g->data_p.player_pos_y = g->sprite.player->instances[0].y;
+	if (g->data_p.sword == 0)
+	{
+		g->data_p.player_pos_x = g->data_p.tab[0]->instances[0].x;
+		g->data_p.player_pos_y = g->data_p.tab[0]->instances[0].y;
+	}
+	if (g->data_p.sword == 1)
+	{
+		ft_printf("%d\n", g->data_p.sword);
+		g->data_p.player_pos_x = g->data_p.tab_w[0]->instances[0].x;
+		g->data_p.player_pos_y = g->data_p.tab_w[0]->instances[0].y;
+	}
 	if (key.key == MLX_KEY_W && key.action == 1 && check_collosion_up(g) && g->success == 0)
 	{
 		g->score.count_move++;
 		aff_score(g);
-		g->sprite.player->instances[0].y -= g->size_block_y;
+		move_player(g, 0);
 	}
 	if (key.key == MLX_KEY_S && key.action == 1 && check_collosion_down(g) && g->success == 0)
 	{
 		g->score.count_move++;
 		aff_score(g);
-		g->sprite.player->instances[0].y += g->size_block_y;
+		move_player(g, 3);
 	}
 	move2(g, key);
 }
@@ -62,14 +71,15 @@ void	ft_hook(void *param)
 		refresh(g);
 		g->time = 0;
 	}
-	g->data_p.player_pos_y = g->sprite.player->instances[0].y;
-	g->data_p.player_pos_x = g->sprite.player->instances[0].x;
-	if (mlx_is_key_down(g->mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(g->mlx);
-	mlx_key_hook(g->mlx, &move, g);
-	check_collectible(g);
-	if (g->count_coll == 0)
-		aff_exit(g);
+	if (g->death.death == 0)
+	{
+		if (mlx_is_key_down(g->mlx, MLX_KEY_ESCAPE))
+			mlx_close_window(g->mlx);
+		mlx_key_hook(g->mlx, &move, g);
+		check_collectible(g);
+		if (g->count_coll == 0)
+			aff_exit(g);
+	}
 }
 
 void	open_window(t_lo *g)
@@ -83,6 +93,7 @@ void	open_window(t_lo *g)
 	mlx_set_window_pos(g->mlx, 1000, 500);
 	set_background(g);
 	set_player(g);
+	set_player_w(g);
 	set_coll(g);
 	set_ennemies(g);
 	set_walls(g);

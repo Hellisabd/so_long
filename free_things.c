@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:44:01 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/19 16:21:05 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:29:42 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	destroy_all(void *g1)
 	g = g1;
 	mlx_delete_texture(g->sprite.back_t);
 	mlx_delete_image(g->mlx, g->sprite.background);
-	mlx_delete_texture(g->sprite.player_t);
 	mlx_delete_image(g->mlx, g->sprite.player);
 	mlx_delete_texture(g->sprite.player_w_t);
 	mlx_delete_image(g->mlx, g->sprite.player_w);
@@ -34,8 +33,11 @@ void	destroy_all(void *g1)
 	mlx_delete_image(g->mlx, g->sprite.c1);
 	mlx_delete_texture(g->sprite.c3_t);
 	mlx_delete_image(g->mlx, g->sprite.c3);
-	mlx_delete_texture(g->sprite.ennemies_t);
+	mlx_delete_texture(g->sprite.ennemiesr_t);
+	mlx_delete_texture(g->sprite.ennemiesl_t);
 	mlx_delete_image(g->mlx, g->sprite.ennemies);
+	mlx_delete_image(g->mlx, g->sprite.ennemiesl);
+	mlx_delete_image(g->mlx, g->sprite.ennemiesr);
 	mlx_delete_texture(g->sprite.exit_t);
 	mlx_delete_image(g->mlx, g->sprite.exit);
 	mlx_delete_texture(g->sprite.success_t);
@@ -50,14 +52,14 @@ void	destroy_all(void *g1)
 	mlx_delete_image(g->mlx, g->sword.tab[3]);
 	mlx_delete_texture(g->sword.tab_t[4]);
 	mlx_delete_image(g->mlx, g->sword.tab[4]);
-	mlx_delete_texture(g->sword.tab_t[5]);
-	mlx_delete_image(g->mlx, g->sword.tab[5]);
-	mlx_delete_texture(g->sword.tab_t[6]);
-	mlx_delete_image(g->mlx, g->sword.tab[6]);
-	mlx_delete_texture(g->sword.tab_t[7]);
-	mlx_delete_image(g->mlx, g->sword.tab[7]);
-	mlx_delete_texture(g->sword.tab_t[8]);
-	mlx_delete_image(g->mlx, g->sword.tab[8]);
+	// mlx_delete_texture(g->sword.tab_t[5]);
+	// mlx_delete_image(g->mlx, g->sword.tab[5]);
+	// mlx_delete_texture(g->sword.tab_t[6]);
+	// mlx_delete_image(g->mlx, g->sword.tab[6]);
+	// mlx_delete_texture(g->sword.tab_t[7]);
+	// mlx_delete_image(g->mlx, g->sword.tab[7]);
+	// mlx_delete_texture(g->sword.tab_t[8]);
+	// mlx_delete_image(g->mlx, g->sword.tab[8]);
 	delete_digit(g);
 	mlx_delete_texture(g->score.s0_t);
 	mlx_delete_texture(g->score.s1_t);

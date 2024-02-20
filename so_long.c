@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 09:59:59 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/19 15:49:46 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:47:11 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ t_lo	lvl_def(char *file, t_lo game)
 
 	game.exit = 0;
 	game.player = 0;
+	game.data_p.player_pos_y = 1;
+	game.data_p.player_pos_x = 1;
 	game.coll = 0;
 	game.x = 0;
 	game.y = 0;
 	game.sword.frame1 = 0;
-	game.sword.frame2 = 10;
+	game.sword.frame2 = 5;
     game.i = 2;
 	game.data_p.sword = 0;
 	game.dir = 0;
@@ -34,6 +36,7 @@ t_lo	lvl_def(char *file, t_lo game)
 	game.success = 0;
 	game.death.death = 0;
 	game.death.frame = 0;
+	game.data_p.frame = 0;
 	game.data_p.weapon = 0;
 	parsing_map(file, &pars, &game);
 	game.height = pars.height;
