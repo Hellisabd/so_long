@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:44:01 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/20 16:29:42 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:09:00 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,6 @@ void	destroy_all(void *g1)
 	mlx_delete_image(g->mlx, g->sword.tab[3]);
 	mlx_delete_texture(g->sword.tab_t[4]);
 	mlx_delete_image(g->mlx, g->sword.tab[4]);
-	// mlx_delete_texture(g->sword.tab_t[5]);
-	// mlx_delete_image(g->mlx, g->sword.tab[5]);
-	// mlx_delete_texture(g->sword.tab_t[6]);
-	// mlx_delete_image(g->mlx, g->sword.tab[6]);
-	// mlx_delete_texture(g->sword.tab_t[7]);
-	// mlx_delete_image(g->mlx, g->sword.tab[7]);
-	// mlx_delete_texture(g->sword.tab_t[8]);
-	// mlx_delete_image(g->mlx, g->sword.tab[8]);
 	delete_digit(g);
 	mlx_delete_texture(g->score.s0_t);
 	mlx_delete_texture(g->score.s1_t);
