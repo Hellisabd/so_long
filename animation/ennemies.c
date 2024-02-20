@@ -6,13 +6,13 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:35:24 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/20 16:53:14 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:06:05 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	pat_ennemies1(t_lo *g, int dir)
+void	pat_ennemies1(t_lo *g)
 {
 	int	x;
 	int	y;

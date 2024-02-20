@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 13:00:43 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/20 16:52:29 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:01:50 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,11 +149,7 @@ void	check_collectible(t_lo *g)
 		mlx_image_to_window(g->mlx, g->sprite.success, 0, 0);
 	}
 	if ((g->map[y][x] == 'D' && g->data_p.weapon != 2) || g->score.count_move >= 999)
-	{
 		g->death.death = 1;
-		// player_death(g);
-		// mlx_close_window((ft_printf("You Died"), g->mlx));
-	}
 	else if (g->map[y][x] == 'D' && g->data_p.weapon == 2)
 	{
 		g->ennemie1_alive = 0;

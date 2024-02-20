@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:16:44 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/20 16:34:46 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:06:17 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,7 +222,7 @@ bool	check_collosion_left(t_lo *g);
 bool	check_collosion_right(t_lo *g);
 bool	check_collosion_down(t_lo *g);
 void	set_ennemies(t_lo *g);
-int		pat_ennemies1(t_lo *g, int dir);
+int		pat_ennemies1(t_lo *g);
 
 //ANIMATION
 
