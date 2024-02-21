@@ -29,7 +29,9 @@ SRCS	= 	map/parsing.c \
 			animation/anim.c	\
 			animation/player_death.c \
 			animation/player_w.c	\
-			move_player.c
+			move_player.c	\
+			animation/ennemies2.c  \
+			init_texture.c
 
 SRCS_MAIN	= so_long.c $(SRCS)
 

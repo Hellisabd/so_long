@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 13:37:17 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/20 16:34:27 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:38:44 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void	aff_player(t_lo *g, int x, int y)
 	mlx_image_to_window(g->mlx, g->data_p.tab[3], x, y);
 	mlx_image_to_window(g->mlx, g->data_p.tab[4], x, y);
 	mlx_image_to_window(g->mlx, g->data_p.tab[5], x, y);
+	g->data_p.player_pos_x = x;
+	g->data_p.player_pos_y = y;
 	g->data_p.tab[0]->instances->enabled = true;
 	g->data_p.tab[1]->instances->enabled = false;
 	g->data_p.tab[2]->instances->enabled = false;

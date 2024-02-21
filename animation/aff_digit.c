@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:11:50 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/15 18:42:45 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:38:39 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,89 +14,106 @@
 
 void	delete_digit(t_lo *g)
 {
-	mlx_delete_image(g->mlx, g->score.s0);
-	mlx_delete_image(g->mlx, g->score.s1);
-	mlx_delete_image(g->mlx, g->score.s2);
-	mlx_delete_image(g->mlx, g->score.s3);
-	mlx_delete_image(g->mlx, g->score.s4);
-	mlx_delete_image(g->mlx, g->score.s5);
-	mlx_delete_image(g->mlx, g->score.s6);
-	mlx_delete_image(g->mlx, g->score.s7);
-	mlx_delete_image(g->mlx, g->score.s8);
-	mlx_delete_image(g->mlx, g->score.s9);
+	g->score.ss0->instances->enabled = false;
+	g->score.ss1->instances->enabled = false;
+	g->score.ss2->instances->enabled = false;
+	g->score.ss3->instances->enabled = false;
+	g->score.ss4->instances->enabled = false;
+	g->score.ss5->instances->enabled = false;
+	g->score.ss6->instances->enabled = false;
+	g->score.ss7->instances->enabled = false;
+	g->score.ss8->instances->enabled = false;
+	g->score.ss9->instances->enabled = false;
+	g->score.fs0->instances->enabled = false;
+	g->score.fs1->instances->enabled = false;
+	g->score.fs2->instances->enabled = false;
+	g->score.fs3->instances->enabled = false;
+	g->score.fs4->instances->enabled = false;
+	g->score.fs5->instances->enabled = false;
+	g->score.fs6->instances->enabled = false;
+	g->score.fs7->instances->enabled = false;
+	g->score.fs8->instances->enabled = false;
+	g->score.fs9->instances->enabled = false;
+	g->score.ts0->instances->enabled = false;
+	g->score.ts1->instances->enabled = false;
+	g->score.ts2->instances->enabled = false;
+	g->score.ts3->instances->enabled = false;
+	g->score.ts4->instances->enabled = false;
+	g->score.ts5->instances->enabled = false;
+	g->score.ts6->instances->enabled = false;
+	g->score.ts7->instances->enabled = false;
+	g->score.ts8->instances->enabled = false;
+	g->score.ts9->instances->enabled = false;
 }
 
-void    aff_first(t_lo *g, char c, int x)
+void    aff_first(t_lo *g, char c)
 {
 	if (c == '0')
-		mlx_image_to_window((g->delete_i[0] = 0, g->mlx), g->score.s0, x, 0);
+		g->score.fs0->instances->enabled = true;
 	if (c == '1')
-		mlx_image_to_window((g->delete_i[0] = 1, g->mlx), g->score.s1, x, 0);
+		g->score.fs1->instances->enabled = true;
 	if (c == '2')
-		mlx_image_to_window((g->delete_i[0] = 2, g->mlx), g->score.s2, x, 0);
+		g->score.fs2->instances->enabled = true;
 	if (c == '3')
-		mlx_image_to_window((g->delete_i[0] = 3, g->mlx), g->score.s3, x, 0);
+		g->score.fs3->instances->enabled = true;
 	if (c == '4')
-		mlx_image_to_window((g->delete_i[0] = 4, g->mlx), g->score.s4, x, 0);
+		g->score.fs4->instances->enabled = true;
 	if (c == '5')
-		mlx_image_to_window((g->delete_i[0] = 5, g->mlx), g->score.s5, x, 0);
+		g->score.fs5->instances->enabled = true;
 	if (c == '6')
-		mlx_image_to_window((g->delete_i[0] = 6, g->mlx), g->score.s6, x, 0);
+		g->score.fs6->instances->enabled = true;
 	if (c == '7')
-		mlx_image_to_window((g->delete_i[0] = 7, g->mlx), g->score.s7, x, 0);
+		g->score.fs7->instances->enabled = true;
 	if (c == '8')
-		mlx_image_to_window((g->delete_i[0] = 8, g->mlx), g->score.s8, x, 0);
+		g->score.fs8->instances->enabled = true;
 	if (c == '9')
-		mlx_image_to_window((g->delete_i[0] = 9, g->mlx), g->score.s9, x, 0);
-	g->delete_i[1] = -1;
-	g->delete_i[2] = -1;
+		g->score.fs9->instances->enabled = true;
 }
 
-void    aff_second(t_lo *g, char c, int x)
+void    aff_second(t_lo *g, char c)
 {
 	if (c == '0')
-		mlx_image_to_window(g->mlx, g->score.s0, x, 0);
+		g->score.ss0->instances->enabled = true;
 	if (c == '1')
-		mlx_image_to_window(g->mlx, g->score.s1, x, 0);
+		g->score.ss1->instances->enabled = true;
 	if (c == '2')
-		mlx_image_to_window(g->mlx, g->score.s2, x, 0);
+		g->score.ss2->instances->enabled = true;
 	if (c == '3')
-		mlx_image_to_window(g->mlx, g->score.s3, x, 0);
+		g->score.ss3->instances->enabled = true;
 	if (c == '4')
-		mlx_image_to_window(g->mlx, g->score.s4, x, 0);
+		g->score.ss4->instances->enabled = true;
 	if (c == '5')
-		mlx_image_to_window(g->mlx, g->score.s5, x, 0);
+		g->score.ss5->instances->enabled = true;
 	if (c == '6')
-		mlx_image_to_window(g->mlx, g->score.s6, x, 0);
+		g->score.ss6->instances->enabled = true;
 	if (c == '7')
-		mlx_image_to_window(g->mlx, g->score.s7, x, 0);
+		g->score.ss7->instances->enabled = true;
 	if (c == '8')
-		mlx_image_to_window(g->mlx, g->score.s8, x, 0);
+		g->score.ss8->instances->enabled = true;
 	if (c == '9')
-		mlx_image_to_window(g->mlx, g->score.s9, x, 0);
-	g->delete_i[2] = -1;
+		g->score.ss9->instances->enabled = true;
 }
 
-void    aff_third(t_lo *g, char c, int x)
+void    aff_third(t_lo *g, char c)
 {
 	if (c == '0')
-		mlx_image_to_window(g->mlx, g->score.s0, x, 0);
+		g->score.ts0->instances->enabled = true;
 	if (c == '1')
-		mlx_image_to_window(g->mlx, g->score.s1, x, 0);
+		g->score.ts1->instances->enabled = true;
 	if (c == '2')
-		mlx_image_to_window(g->mlx, g->score.s2, x, 0);
+		g->score.ts2->instances->enabled = true;
 	if (c == '3')
-		mlx_image_to_window(g->mlx, g->score.s3, x, 0);
+		g->score.ts3->instances->enabled = true;
 	if (c == '4')
-		mlx_image_to_window(g->mlx, g->score.s4, x, 0);
+		g->score.ts4->instances->enabled = true;
 	if (c == '5')
-		mlx_image_to_window(g->mlx, g->score.s5, x, 0);
+		g->score.ts5->instances->enabled = true;
 	if (c == '6')
-		mlx_image_to_window(g->mlx, g->score.s6, x, 0);
+		g->score.ts6->instances->enabled = true;
 	if (c == '7')
-		mlx_image_to_window(g->mlx, g->score.s7, x, 0);
+		g->score.ts7->instances->enabled = true;
 	if (c == '8')
-		mlx_image_to_window(g->mlx, g->score.s8, x, 0);
+		g->score.ts8->instances->enabled = true;
 	if (c == '9')
-		mlx_image_to_window(g->mlx, g->score.s9, x, 0);
+		g->score.ts9->instances->enabled = true;
 }

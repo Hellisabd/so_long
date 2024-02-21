@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 13:00:43 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/20 17:01:50 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:47:48 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,10 +117,10 @@ void	check_collectible(t_lo *g)
 
 	x = (int)round(g->data_p.player_pos_x / (WIDTH / (g->width - 1)));
 	y = (int)round(g->data_p.player_pos_y / (HEIGHT / g->height));
-	// ft_printf("x : %d\ny : %d\n", x, y);
 	if (g->map[y][x] == 'S')
 	{
 		mlx_delete_image((g->count_coll--, g->mlx), g->sprite.c1);
+		g->data_p.holy = 1;
 		g->map[y][x] = '0';
 		g->data_p.weapon++;
 	}
@@ -153,8 +153,20 @@ void	check_collectible(t_lo *g)
 	else if (g->map[y][x] == 'D' && g->data_p.weapon == 2)
 	{
 		g->ennemie1_alive = 0;
-		mlx_delete_image(g->mlx, g->sprite.ennemiesl);
-		mlx_delete_image(g->mlx, g->sprite.ennemiesr);
+		g->map[y][x] = '0';
+		g->count_coll--;
+		mlx_delete_image(g->mlx, g->sprite.ennemiesl1);
+		mlx_delete_image(g->mlx, g->sprite.ennemiesr1);
+	}
+	if ((g->map[y][x] == 'H' && g->data_p.holy != 1))
+		g->death.death = 1;
+	else if (g->map[y][x] == 'H' && g->data_p.holy == 1)
+	{
+		g->ennemie2_alive = 0;
+		g->map[y][x] = '0';
+		g->count_coll--;
+		mlx_delete_image(g->mlx, g->sprite.ennemiesl2);
+		mlx_delete_image(g->mlx, g->sprite.ennemiesr2);
 	}
 }
 

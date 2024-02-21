@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 10:18:50 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/14 17:34:52 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:35:04 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,12 @@ bool	find_exit(t_lo *g)
 	if (!check_c_left2(g, 'C'))
 		exit((ft_free_tab(g->map), \
 		ft_printf("Error\nCan't reach all the collectible\n"), 1));
+	if (!check_c_left2(g, 'H'))
+		exit((ft_free_tab(g->map), \
+		ft_printf("Error\nCan't reach all the collectible1\n"), 1));
+	if (!check_c_left2(g, 'D'))
+		exit((ft_free_tab(g->map), \
+		ft_printf("Error\nCan't reach all the collectible2\n"), 1));
 	if (verif(g))
 		return (true);
 	return (false);
@@ -107,12 +113,22 @@ int	check_infos(t_lo *g)
 				return (-1);
 			if (g->map[g->y][g->x] == 'E' && g->exit == 0)
 				g->exit = 1;
-			if (g->map[g->y][g->x] == 'C')
+			if (g->map[g->y][g->x] == 'C' || g->map[g->y][g->x] == 'H' || g->map[g->y][g->x] == 'D')
 				g->coll++;
+			if (g->map[g->y][g->x] == 'D' && g->ennemie1_alive == 1)
+				exit(ft_printf("Error\nToo many ennemies"));
+			if (g->map[g->y][g->x] == 'D')
+				g->ennemie1_alive = 1;
+			if (g->map[g->y][g->x] == 'H' && g->ennemie2_alive == 1)
+				exit(ft_printf("Error\nToo many ennemies"));
+			if (g->map[g->y][g->x] == 'H')
+				g->ennemie2_alive = 1;
+			if (g->map[g->y][g->x] == 'H')
+				g->ennemie2_alive = 1;
 			if (g->map[g->y][g->x] != 'P' && g->map[g->y][g->x] != 'E'
 				&& g->map[g->y][g->x] != '1' && g->map[g->y][g->x] != '0'
 				&& g->map[g->y][g->x] != 'C' && g->map[g->y][g->x] != '\0'
-				&& g->map[g->y][g->x] != '\n' && g->map[g->y][g->x] != 'D')
+				&& g->map[g->y][g->x] != '\n' && g->map[g->y][g->x] != 'D' && g->map[g->y][g->x] != 'H')
 				return (-1);
 		}
 		g->y++;

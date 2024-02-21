@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:39:25 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/20 16:45:42 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:42:19 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	move(struct mlx_key_data key, void	*param)
 	}
 	if (g->data_p.sword == 1)
 	{
-		ft_printf("%d\n", g->data_p.sword);
 		g->data_p.player_pos_x = g->data_p.tab_w[0]->instances[0].x;
 		g->data_p.player_pos_y = g->data_p.tab_w[0]->instances[0].y;
 	}
@@ -69,6 +68,7 @@ void	ft_hook(void *param)
 	if (g->time > 0.03)
 	{
 		refresh(g);
+		check_collectible(g);
 		g->time = 0;
 	}
 	if (g->death.death == 0)

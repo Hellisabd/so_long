@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:18:55 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/20 15:30:39 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:30:01 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -271,8 +271,5 @@ void	player_death(t_lo *g)
 		g->death.tab[g->death.frame - 1]->instances->enabled = false;
 	g->death.frame++;
 	if (g->death.frame == 30)
-	{
-		usleep(5000000);
 		mlx_close_window(g->mlx);
-	}
 }

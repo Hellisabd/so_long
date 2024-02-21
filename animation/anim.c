@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 10:04:18 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/20 17:09:49 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:29:40 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void    swords(t_lo *g)
 
 void    refresh(t_lo *g)
 {
+	
 	g->frame++;
 	if ((g->data_p.sword == 0) && (g->frame % 3) == 0 && g->death.death == 0)
 	{
@@ -102,7 +103,9 @@ void    refresh(t_lo *g)
 		player_anim_w(g);
 	}
 	if (g->frame % 2 == 0 && g->ennemie1_alive == 1 && g->death.death == 0)
-		pat_ennemies1(g);
+		g->dir1 = pat_ennemies1(g, g->dir1);
+	if (g->frame % 2 == 0 && g->ennemie2_alive == 1 && g->death.death == 0)
+		g->dir2 = pat_ennemies2(g, g->dir2);
 	if (g->death.death == 1 && g->frame % 3 == 0)
 	{
 		mlx_delete_image(g->mlx, g->sword.tab[0]);

@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:38:33 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/20 14:59:54 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:57:54 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,23 @@ void	aff_all(t_lo *g, int x, int y)
 				exit ((destroy_all(g), ft_printf("Error\nimage to window\n", 1)));
 		if (g->map[g->y][g->x] == 'D')
 		{
-			if (-1 == mlx_image_to_window(g->mlx, g->sprite.ennemiesr, x, y))
+			if (-1 == mlx_image_to_window(g->mlx, g->sprite.ennemiesr1, x, y))
 				exit ((destroy_all(g), ft_printf("Error\nimage to window\n", 1)));
-			if (-1 == mlx_image_to_window(g->mlx, g->sprite.ennemiesl, x, y))
+			if (-1 == mlx_image_to_window(g->mlx, g->sprite.ennemiesl1, x, y))
 				exit ((destroy_all(g), ft_printf("Error\nimage to window\n", 1)));
-			g->sprite.ennemiesl->instances->enabled = false;
-			g->en_x = g->x;
-			g->en_y = g->y;
-			
+			g->sprite.ennemiesl1->instances->enabled = false;
+			g->en1_x = g->x;
+			g->en1_y = g->y;
+		}
+		if (g->map[g->y][g->x] == 'H')
+		{
+			if (-1 == mlx_image_to_window(g->mlx, g->sprite.ennemiesr2, x, y))
+				exit ((destroy_all(g), ft_printf("Error\nimage to window\n", 1)));
+			if (-1 == mlx_image_to_window(g->mlx, g->sprite.ennemiesl2, x, y))
+				exit ((destroy_all(g), ft_printf("Error\nimage to window\n", 1)));
+			g->sprite.ennemiesl2->instances->enabled = false;
+			g->en2_x = g->x;
+			g->en2_y = g->y;
 		}
 		x += g->size_block_x;
 		g->x++;

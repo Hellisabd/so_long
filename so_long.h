@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:16:44 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/20 17:07:30 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:32:00 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ typedef struct s_sprite
 	mlx_texture_t	*c1_t;
 	mlx_texture_t	*c3_t;
 	mlx_texture_t	*exit_t;
-	mlx_texture_t	*ennemiesr_t;
-	mlx_texture_t	*ennemiesl_t;
+	mlx_texture_t	*ennemiesr1_t;
+	mlx_texture_t	*ennemiesl1_t;
+	mlx_texture_t	*ennemiesr2_t;
+	mlx_texture_t	*ennemiesl2_t;
 	mlx_texture_t	*success_t;
 	mlx_image_t		*background;
 	mlx_image_t		*player;
@@ -39,9 +41,10 @@ typedef struct s_sprite
 	mlx_image_t		*exit;
 	mlx_image_t		*c1;
 	mlx_image_t		*c3;
-	mlx_image_t		*ennemiesr;
-	mlx_image_t		*ennemiesl;
-	mlx_image_t		*ennemies;
+	mlx_image_t		*ennemiesr1;
+	mlx_image_t		*ennemiesl1;
+	mlx_image_t		*ennemiesl2;
+	mlx_image_t		*ennemiesr2;
 	mlx_image_t		*success;
 }	t_sprite;
 
@@ -76,8 +79,8 @@ typedef struct s_death
 
 typedef struct s_sword
 {
-	mlx_image_t		*tab[9];
-	mlx_texture_t	*tab_t[9];
+	mlx_image_t		*tab[6];
+	mlx_texture_t	*tab_t[6];
 	int				frame1;
 	int				frame2;
 	int				x;
@@ -93,6 +96,7 @@ typedef struct s_data_p
 	int				p_speed;
 	int				weapon;
 	int				sword;
+	int				holy;
 	mlx_image_t		*tab[6];
 	mlx_texture_t	*tab_t[6];
 	mlx_image_t		*tab_w[6];
@@ -112,16 +116,36 @@ typedef struct s_score
 	mlx_texture_t	*s7_t;
 	mlx_texture_t	*s8_t;
 	mlx_texture_t	*s9_t;
-	mlx_image_t		*s0;
-	mlx_image_t		*s1;
-	mlx_image_t		*s2;
-	mlx_image_t		*s3;
-	mlx_image_t		*s4;
-	mlx_image_t		*s5;
-	mlx_image_t		*s6;
-	mlx_image_t		*s7;
-	mlx_image_t		*s8;
-	mlx_image_t		*s9;
+	mlx_image_t		*fs0;
+	mlx_image_t		*fs1;
+	mlx_image_t		*fs2;
+	mlx_image_t		*fs3;
+	mlx_image_t		*fs4;
+	mlx_image_t		*fs5;
+	mlx_image_t		*fs6;
+	mlx_image_t		*fs7;
+	mlx_image_t		*fs8;
+	mlx_image_t		*fs9;
+	mlx_image_t		*ss0;
+	mlx_image_t		*ss1;
+	mlx_image_t		*ss2;
+	mlx_image_t		*ss3;
+	mlx_image_t		*ss4;
+	mlx_image_t		*ss5;
+	mlx_image_t		*ss6;
+	mlx_image_t		*ss7;
+	mlx_image_t		*ss8;
+	mlx_image_t		*ss9;
+	mlx_image_t		*ts0;
+	mlx_image_t		*ts1;
+	mlx_image_t		*ts2;
+	mlx_image_t		*ts3;
+	mlx_image_t		*ts4;
+	mlx_image_t		*ts5;
+	mlx_image_t		*ts6;
+	mlx_image_t		*ts7;
+	mlx_image_t		*ts8;
+	mlx_image_t		*ts9;
 	int				count_move;
 }	t_score;
 
@@ -155,10 +179,14 @@ typedef struct s_lo
 	double		time;
 	int			i;
 	int			success;
-	int			en_x;
-	int			en_y;
-	int			dir;
+	int			en1_x;
+	int			en1_y;
+	int			en2_x;
+	int			en2_y;
+	int			dir1;
+	int			dir2;
 	int			ennemie1_alive;
+	int			ennemie2_alive;
 	t_death		death;
 }	t_lo;
 
@@ -195,9 +223,9 @@ void	aff_exit(t_lo *g);
 void    set_score1(t_lo *g);
 void    aff_score(t_lo *g);
 void	delete_digit(t_lo *g);
-void    aff_first(t_lo *g, char c, int x);
-void    aff_second(t_lo *g, char c, int x);
-void    aff_third(t_lo *g, char c, int x);
+void    aff_first(t_lo *g, char c);
+void    aff_second(t_lo *g, char c);
+void    aff_third(t_lo *g, char c);
 void    swords_img1(t_lo *g);
 void	set_success(t_lo *g);
 void	init_death(t_lo *g);
@@ -222,7 +250,9 @@ bool	check_collosion_left(t_lo *g);
 bool	check_collosion_right(t_lo *g);
 bool	check_collosion_down(t_lo *g);
 void	set_ennemies(t_lo *g);
-void	pat_ennemies1(t_lo *g);
+void	set_ennemies2(t_lo *g);
+int		pat_ennemies2(t_lo *g, int dir);
+int		pat_ennemies1(t_lo *g, int dir);
 
 //ANIMATION
 
