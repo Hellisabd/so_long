@@ -20,6 +20,8 @@ SRCS	= 	map/parsing.c \
 			animation/player.c \
 			animation/walls.c \
 			free_things.c	\
+			free_things2.c	\
+			free_things3.c	\
 			animation/collectible.c	\
 			collision.c \
 			animation/exit.c \

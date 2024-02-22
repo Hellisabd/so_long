@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:16:44 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/21 17:32:00 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/22 17:49:43 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,6 +211,8 @@ void	map_cpy(t_pars *pars, char *file, t_lo *game);
 void	parsing_map(char *file, t_pars *pars, t_lo *game);
 void	destroy_all(void *g1);
 void	ft_hook(void *param);
+void	destroy_all4(t_lo *g);
+void	destroy_all10(t_lo *g);
 
 //GRAPHISMS
 
@@ -235,6 +237,7 @@ void	player_anim(t_lo *g);
 void	player_anim_w(t_lo *g);
 void	set_player_w(t_lo *g);
 void    move_player(t_lo *g, int dir);
+void	destroy_all5(t_lo *g);
 
 //Secrets
 
