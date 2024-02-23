@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 09:54:00 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/23 14:19:20 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/23 17:00:25 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ bool	check_c_left2(t_lo *g, char c)
 				return (false);
 			j++;
 		}
-		ft_printf("%s", g->map[i]);
 		i++;
 	}
 	return (true);
