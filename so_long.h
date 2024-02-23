@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:16:44 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/23 15:43:40 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:35:00 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,6 +249,7 @@ void	player_anim_w(t_lo *g);
 void	set_player_w(t_lo *g);
 void	move_player(t_lo *g, int dir);
 void	d_a5(t_lo *g);
+bool	file_validity(char *file);
 
 //Secrets
 

@@ -6,11 +6,29 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 13:43:02 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/23 15:43:25 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:37:01 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+bool	file_validity(char *file)
+{
+	int i;
+
+	i = 0;
+	while (file[i])
+		i++;
+	if (file[i - 1] != 'r')
+		return (false);
+	if (file[i - 2] != 'e')
+		return (false);
+	if (file[i - 3] != 'b')
+		return (false);
+	if (file[i - 4] != '.')
+		return (false);
+	return (true);
+}
 
 void	find_exit2(t_lo *g)
 {

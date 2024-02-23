@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 09:59:59 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/23 15:59:15 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:34:45 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,12 @@ t_lo	lvl_def(char *file, t_lo game)
 
 int	main(void)
 {
-	char	*file0;
+	char	*file;
 	t_lo	g;
 
-	file0 = "map/map_file_2.ber";
-	g = lvl_def(file0, g);
+	file = "map/map_file_2.ber";
+	if (!file_validity(file))
+		return (ft_printf("Error\nWrong file format"), 0);
+	g = lvl_def(file, g);
 	mlx_terminate(g.mlx);
 }
