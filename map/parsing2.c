@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 13:43:02 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/23 16:37:01 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:42:01 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	file_validity(char *file)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (file[i])
