@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:16:44 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/22 17:49:43 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/23 15:43:40 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,7 @@ typedef struct s_lo
 	int			p_y;
 	int			e_x;
 	int			e_y;
+	int			close;
 	mlx_t		*mlx;
 	t_sprite	sprite;
 	int			frame;
@@ -199,9 +200,13 @@ typedef struct s_pars
 }	t_pars;
 
 int		check_infos(t_lo *game);
+int		check_infos2(t_lo *g);
+void	check_collectible2(t_lo *g, int x, int y);
+void	check_collectible1(t_lo *g, int x, int y);
 bool	check_c_left(t_lo *g, char c);
 bool	check_c_left2(t_lo *g, char c);
 void	check_valid_exit(t_lo *g);
+void	find_exit2(t_lo *g);
 void	spread_x(t_lo *g);
 void	spread_y(t_lo *g);
 void	open_window(t_lo *g);
@@ -209,26 +214,32 @@ void	ft_count_line(char *file, t_pars *pars);
 void	check_walls(t_pars *pars, t_lo *game);
 void	map_cpy(t_pars *pars, char *file, t_lo *game);
 void	parsing_map(char *file, t_pars *pars, t_lo *game);
-void	destroy_all(void *g1);
+void	d_a(void *g1);
 void	ft_hook(void *param);
-void	destroy_all4(t_lo *g);
-void	destroy_all10(t_lo *g);
+void	d_a4(t_lo *g);
+void	d_a10(t_lo *g);
+void	init_death(t_lo *g);
+void	init_death5(t_lo *g);
+void	init_death10(t_lo *g);
+void	init_texture(t_lo *g);
 
 //GRAPHISMS
-
+void	set_player_w1(t_lo *g);
 void	set_background(t_lo *g);
 void	set_player(t_lo *g);
 void	set_walls(t_lo *g);
 void	set_coll(t_lo *g);
 void	set_exit(t_lo *g);
 void	aff_exit(t_lo *g);
-void    set_score1(t_lo *g);
-void    aff_score(t_lo *g);
+void	set_score1(t_lo *g);
+void	score_img_third(t_lo *g);
+void	score_img_second1(t_lo *g);
+void	aff_score(t_lo *g);
 void	delete_digit(t_lo *g);
-void    aff_first(t_lo *g, char c);
-void    aff_second(t_lo *g, char c);
-void    aff_third(t_lo *g, char c);
-void    swords_img1(t_lo *g);
+void	aff_first(t_lo *g, char c);
+void	aff_second(t_lo *g, char c);
+void	aff_third(t_lo *g, char c);
+void	swords_img1(t_lo *g);
 void	set_success(t_lo *g);
 void	init_death(t_lo *g);
 void	aff_player(t_lo *g, int x, int y);
@@ -236,8 +247,8 @@ void	aff_player_w(t_lo *g, int x, int y);
 void	player_anim(t_lo *g);
 void	player_anim_w(t_lo *g);
 void	set_player_w(t_lo *g);
-void    move_player(t_lo *g, int dir);
-void	destroy_all5(t_lo *g);
+void	move_player(t_lo *g, int dir);
+void	d_a5(t_lo *g);
 
 //Secrets
 
@@ -259,7 +270,7 @@ int		pat_ennemies1(t_lo *g, int dir);
 
 //ANIMATION
 
-void    refresh(t_lo *g);
+void	refresh(t_lo *g);
 void	player_death(t_lo *g);
 
 #endif

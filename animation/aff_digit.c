@@ -6,11 +6,25 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:11:50 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/21 15:38:39 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/23 11:57:37 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	delete_digit1(t_lo *g)
+{
+	g->score.ts0->instances->enabled = false;
+	g->score.ts1->instances->enabled = false;
+	g->score.ts2->instances->enabled = false;
+	g->score.ts3->instances->enabled = false;
+	g->score.ts4->instances->enabled = false;
+	g->score.ts5->instances->enabled = false;
+	g->score.ts6->instances->enabled = false;
+	g->score.ts7->instances->enabled = false;
+	g->score.ts8->instances->enabled = false;
+	g->score.ts9->instances->enabled = false;
+}
 
 void	delete_digit(t_lo *g)
 {
@@ -34,19 +48,10 @@ void	delete_digit(t_lo *g)
 	g->score.fs7->instances->enabled = false;
 	g->score.fs8->instances->enabled = false;
 	g->score.fs9->instances->enabled = false;
-	g->score.ts0->instances->enabled = false;
-	g->score.ts1->instances->enabled = false;
-	g->score.ts2->instances->enabled = false;
-	g->score.ts3->instances->enabled = false;
-	g->score.ts4->instances->enabled = false;
-	g->score.ts5->instances->enabled = false;
-	g->score.ts6->instances->enabled = false;
-	g->score.ts7->instances->enabled = false;
-	g->score.ts8->instances->enabled = false;
-	g->score.ts9->instances->enabled = false;
+	delete_digit1(g);
 }
 
-void    aff_first(t_lo *g, char c)
+void	aff_first(t_lo *g, char c)
 {
 	if (c == '0')
 		g->score.fs0->instances->enabled = true;
@@ -70,7 +75,7 @@ void    aff_first(t_lo *g, char c)
 		g->score.fs9->instances->enabled = true;
 }
 
-void    aff_second(t_lo *g, char c)
+void	aff_second(t_lo *g, char c)
 {
 	if (c == '0')
 		g->score.ss0->instances->enabled = true;
@@ -94,7 +99,7 @@ void    aff_second(t_lo *g, char c)
 		g->score.ss9->instances->enabled = true;
 }
 
-void    aff_third(t_lo *g, char c)
+void	aff_third(t_lo *g, char c)
 {
 	if (c == '0')
 		g->score.ts0->instances->enabled = true;

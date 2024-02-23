@@ -6,13 +6,13 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:44:01 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/22 17:44:03 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/23 15:52:20 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	destroy_all3(t_lo *g)
+void	d_a3(t_lo *g)
 {
 	if (g->death.tab_t[0])
 		mlx_delete_texture(g->death.tab_t[0]);
@@ -36,13 +36,12 @@ void	destroy_all3(t_lo *g)
 		mlx_delete_texture(g->death.tab_t[29]);
 	if (g->death.d_screen_t)
 		mlx_delete_texture(g->death.d_screen_t);
-	destroy_all4(g);
+	d_a4(g);
 }
 
-
-void	destroy_all2(t_lo *g)
+void	d_a2(t_lo *g)
 {
-		if (g->sprite.ennemiesl2_t)
+	if (g->sprite.ennemiesl2_t)
 		mlx_delete_texture(g->sprite.ennemiesl2_t);
 	if (g->sprite.success_t)
 		mlx_delete_texture(g->sprite.success_t);
@@ -62,10 +61,10 @@ void	destroy_all2(t_lo *g)
 		mlx_delete_texture(g->death.tab_t[22]);
 	if (g->death.tab_t[23])
 		mlx_delete_texture(g->death.tab_t[23]);
-	destroy_all3(g);
+	d_a3(g);
 }
 
-void	destroy_all1(t_lo *g)
+void	d_a1(t_lo *g)
 {
 	if (g->death.tab_t[4])
 		mlx_delete_texture(g->death.tab_t[4]);
@@ -91,20 +90,19 @@ void	destroy_all1(t_lo *g)
 		mlx_delete_texture(g->death.tab_t[14]);
 	if (g->death.tab_t[15])
 		mlx_delete_texture(g->death.tab_t[15]);
-	destroy_all2(g);
+	d_a2(g);
 }
 
-void	destroy_all(void *g1)
+void	d_a(void *g1)
 {
 	t_lo	*g;
 
 	g = g1;
+	ft_printf("%d", g->close);
+	if (g->close == 0)
+		mlx_close_window(g->mlx);
 	if (g->sprite.back_t)
 		mlx_delete_texture(g->sprite.back_t);
-	if (g->sprite.player_t)
-		mlx_delete_texture(g->sprite.player_t);
-	if (g->sprite.player_w_t)
-		mlx_delete_texture(g->sprite.player_w_t);
 	if (g->sprite.wall_t)
 		mlx_delete_texture(g->sprite.wall_t);
 	if (g->sprite.c1_t)
@@ -119,5 +117,5 @@ void	destroy_all(void *g1)
 		mlx_delete_texture(g->sprite.ennemiesl1_t);
 	if (g->sprite.ennemiesr2_t)
 		mlx_delete_texture(g->sprite.ennemiesr2_t);
-	destroy_all1(g);
+	d_a1(g);
 }

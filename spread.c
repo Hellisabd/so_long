@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 09:54:00 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/21 15:23:34 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/23 14:19:20 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,17 @@ void	spread_x(t_lo *g)
 {
 	if (g->map[g->y][g->x] == 'P' || g->map[g->y][g->x] == 'X')
 	{
-		if (g->map[g->y][g->x + 1] == '0' || g->map[g->y][g->x + 1] == 'C' || g->map[g->y][g->x + 1] == 'D' || g->map[g->y][g->x + 1] == 'H')
+		if (g->map[g->y][g->x + 1] == '0' || g->map[g->y][g->x + 1] == 'C'
+			|| g->map[g->y][g->x + 1] == 'D' || g->map[g->y][g->x + 1] == 'H')
 			g->map[g->y][g->x + 1] = 'X';
-		if (g->map[g->y][g->x - 1] == '0' || g->map[g->y][g->x - 1] == 'C' || g->map[g->y][g->x - 1] == 'D' || g->map[g->y][g->x - 1] == 'H')
+		if (g->map[g->y][g->x - 1] == '0' || g->map[g->y][g->x - 1] == 'C'
+			|| g->map[g->y][g->x - 1] == 'D' || g->map[g->y][g->x - 1] == 'H')
 			g->map[g->y][g->x - 1] = 'X';
-		if (g->map[g->y + 1][g->x] == '0' || g->map[g->y + 1][g->x] == 'C' || g->map[g->y - 1][g->x] == 'D' || g->map[g->y - 1][g->x] == 'H')
+		if (g->map[g->y + 1][g->x] == '0' || g->map[g->y + 1][g->x] == 'C'
+			|| g->map[g->y - 1][g->x] == 'D' || g->map[g->y - 1][g->x] == 'H')
 			g->map[g->y + 1][g->x] = 'X';
-		if (g->map[g->y - 1][g->x] == '0' || g->map[g->y - 1][g->x] == 'C' || g->map[g->y + 1][g->x] == 'D' || g->map[g->y + 1][g->x] == 'H')
+		if (g->map[g->y - 1][g->x] == '0' || g->map[g->y - 1][g->x] == 'C'
+			|| g->map[g->y + 1][g->x] == 'D' || g->map[g->y + 1][g->x] == 'H')
 			g->map[g->y - 1][g->x] = 'X';
 	}
 }
@@ -31,13 +35,17 @@ void	spread_y(t_lo *g)
 {
 	if (g->map[g->y][g->x] == 'E' || g->map[g->y][g->x] == 'Y')
 	{
-		if (g->map[g->y][g->x + 1] == '0' || g->map[g->y][g->x + 1] == 'C' || g->map[g->y][g->x + 1] == 'D' || g->map[g->y][g->x + 1] == 'H')
+		if (g->map[g->y][g->x + 1] == '0' || g->map[g->y][g->x + 1] == 'C'
+			|| g->map[g->y][g->x + 1] == 'D' || g->map[g->y][g->x + 1] == 'H')
 			g->map[g->y][g->x + 1] = 'Y';
-		if (g->map[g->y][g->x - 1] == '0' || g->map[g->y][g->x - 1] == 'C' || g->map[g->y][g->x - 1] == 'D' || g->map[g->y][g->x - 1] == 'H')
+		if (g->map[g->y][g->x - 1] == '0' || g->map[g->y][g->x - 1] == 'C'
+			|| g->map[g->y][g->x - 1] == 'D' || g->map[g->y][g->x - 1] == 'H')
 			g->map[g->y][g->x - 1] = 'Y';
-		if (g->map[g->y + 1][g->x] == '0' || g->map[g->y + 1][g->x] == 'C' || g->map[g->y + 1][g->x] == 'D' || g->map[g->y - 1][g->x] == 'H')
+		if (g->map[g->y + 1][g->x] == '0' || g->map[g->y + 1][g->x] == 'C'
+			|| g->map[g->y + 1][g->x] == 'D' || g->map[g->y + 1][g->x] == 'H')
 			g->map[g->y + 1][g->x] = 'Y';
-		if (g->map[g->y - 1][g->x] == '0' || g->map[g->y - 1][g->x] == 'C' || g->map[g->y - 1][g->x] == 'D' || g->map[g->y + 1][g->x] == 'H')
+		if (g->map[g->y - 1][g->x] == '0' || g->map[g->y - 1][g->x] == 'C'
+			|| g->map[g->y - 1][g->x] == 'D' || g->map[g->y - 1][g->x] == 'H')
 			g->map[g->y - 1][g->x] = 'Y';
 	}
 }
@@ -81,6 +89,7 @@ bool	check_c_left2(t_lo *g, char c)
 				return (false);
 			j++;
 		}
+		ft_printf("%s", g->map[i]);
 		i++;
 	}
 	return (true);

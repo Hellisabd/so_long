@@ -6,33 +6,16 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 12:18:20 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/21 13:45:42 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/23 14:56:48 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	pat_ennemies2(t_lo *g, int dir)
+int	pat_ennemies2_ext(t_lo *g, int dir, int x, int y)
 {
-	int	x;
-	int	y;
-
-	x = g->en2_x;
-	y = g->en2_y;
-	if (g->success == 1)
-		return (-1);
-	if (dir == 0 && g->map[y - 1][x] != '0' && g->map[y - 1][x] != 'P')
-		return (rand() % 4);
-	else if (dir == 0)
-	{
-		g->map[y - 1][x] = 'H';
-		g->map[y][x] = '0';
-		g->en2_y = y - 1;
-		g->sprite.ennemiesl2->instances[0].y -= g->size_block_y;
-		g->sprite.ennemiesr2->instances[0].y -= g->size_block_y;
-	}
 	if (dir == 1 && g->map[y][x + 1] != '0' && g->map[y][x + 1] != 'P')
-		return (rand() % 4);
+		return (-1);
 	else if (dir == 1)
 	{
 		g->map[y][x + 1] = 'H';
@@ -43,6 +26,11 @@ int	pat_ennemies2(t_lo *g, int dir)
 		g->sprite.ennemiesr2->instances->enabled = true;
 		g->sprite.ennemiesl2->instances->enabled = false;
 	}
+	return (0);
+}
+
+int	pat_ennemies3_ext(t_lo *g, int dir, int x, int y)
+{
 	if (dir == 2 && g->map[y][x - 1] != '0' && g->map[y][x - 1] != 'P')
 		return (rand() % 4);
 	else if (dir == 2)
@@ -68,24 +56,50 @@ int	pat_ennemies2(t_lo *g, int dir)
 	return (rand() % 4);
 }
 
+int	pat_ennemies2(t_lo *g, int dir)
+{
+	int	x;
+	int	y;
+
+	x = g->en2_x;
+	y = g->en2_y;
+	if (g->success == 1)
+		return (-1);
+	if (dir == 0 && g->map[y - 1][x] != '0' && g->map[y - 1][x] != 'P')
+		return (rand() % 4);
+	else if (dir == 0)
+	{
+		g->map[y - 1][x] = 'H';
+		g->map[y][x] = '0';
+		g->en2_y = y - 1;
+		g->sprite.ennemiesl2->instances[0].y -= g->size_block_y;
+		g->sprite.ennemiesr2->instances[0].y -= g->size_block_y;
+	}
+	pat_ennemies2_ext(g, dir, x, y);
+	pat_ennemies3_ext(g, dir, x, y);
+	return (rand() % 4);
+}
+
 void	set_ennemies2(t_lo *g)
 {
 	g->sprite.ennemiesl2_t = mlx_load_png("assets/ennemies_2l.png");
 	if (!g->sprite.ennemiesl2_t)
-		exit ((ft_printf("Error loading PNG\n"), EXIT_FAILURE));
+		exit ((ft_printf("Error loading PNG\n"), d_a(g), EXIT_FAILURE));
 	g->sprite.ennemiesl2 = mlx_texture_to_image(g->mlx, g->sprite.ennemiesl2_t);
 	if (!g->sprite.ennemiesl2)
 		exit((ft_printf("Error during loading texture to image\n") \
 		, EXIT_FAILURE));
-	if (!mlx_resize_image(g->sprite.ennemiesl2, g->size_block_x, g->size_block_y))
-		exit ((ft_printf("Error resizing Background\n"), EXIT_FAILURE));
+	if (!mlx_resize_image(g->sprite.ennemiesl2, \
+	g->size_block_x, g->size_block_y))
+		exit ((ft_printf("Error resizing Background\n"), d_a(g), EXIT_FAILURE));
 	g->sprite.ennemiesr2_t = mlx_load_png("assets/ennemies_2r.png");
 	if (!g->sprite.ennemiesr2_t)
-		exit ((ft_printf("Error loading PNG\n"), EXIT_FAILURE));
+		exit ((ft_printf("Error loading PNG\n"), d_a(g), EXIT_FAILURE));
 	g->sprite.ennemiesr2 = mlx_texture_to_image(g->mlx, g->sprite.ennemiesr2_t);
 	if (!g->sprite.ennemiesr2)
 		exit((ft_printf("Error during loading texture to image\n") \
 		, EXIT_FAILURE));
-	if (!mlx_resize_image(g->sprite.ennemiesr2, g->size_block_x, g->size_block_y))
-		exit ((ft_printf("Error resizing Background\n"), EXIT_FAILURE));
+	if (!mlx_resize_image(g->sprite.ennemiesr2, \
+	g->size_block_x, g->size_block_y))
+		exit ((ft_printf("Error resizing Background\n"), d_a(g), EXIT_FAILURE));
 }

@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:39:25 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/21 15:42:19 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/23 11:46:54 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,12 @@
 
 void	move2(t_lo *g, struct mlx_key_data key)
 {
-
-	if (key.key == MLX_KEY_A && key.action == 1 && check_collosion_left(g) && g->success == 0)
-	{
-		g->score.count_move++;
-		aff_score(g);
-		move_player(g, 2);
-	}
-	if (key.key == MLX_KEY_D && key.action == 1 && check_collosion_right(g) && g->success == 0)
-	{
-		g->score.count_move++;
-		aff_score(g);
-		move_player(g, 1);
-	}
+	if (key.key == MLX_KEY_A && key.action == 1 && check_collosion_left(g)
+		&& g->success == 0)
+		move_player((aff_score(g), g->score.count_move++, g), 2);
+	if (key.key == MLX_KEY_D && key.action == 1 && check_collosion_right(g)
+		&& g->success == 0)
+		move_player((aff_score(g), g->score.count_move++, g), 1);
 }
 
 void	move(struct mlx_key_data key, void	*param)
@@ -44,18 +37,12 @@ void	move(struct mlx_key_data key, void	*param)
 		g->data_p.player_pos_x = g->data_p.tab_w[0]->instances[0].x;
 		g->data_p.player_pos_y = g->data_p.tab_w[0]->instances[0].y;
 	}
-	if (key.key == MLX_KEY_W && key.action == 1 && check_collosion_up(g) && g->success == 0)
-	{
-		g->score.count_move++;
-		aff_score(g);
-		move_player(g, 0);
-	}
-	if (key.key == MLX_KEY_S && key.action == 1 && check_collosion_down(g) && g->success == 0)
-	{
-		g->score.count_move++;
-		aff_score(g);
-		move_player(g, 3);
-	}
+	if (key.key == MLX_KEY_W && key.action == 1 && check_collosion_up(g)
+		&& g->success == 0)
+		move_player((aff_score(g), g->score.count_move++, g), 0);
+	if (key.key == MLX_KEY_S && key.action == 1 && check_collosion_down(g)
+		&& g->success == 0)
+		move_player((aff_score(g), g->score.count_move++, g), 3);
 	move2(g, key);
 }
 
@@ -74,7 +61,7 @@ void	ft_hook(void *param)
 	if (g->death.death == 0)
 	{
 		if (mlx_is_key_down(g->mlx, MLX_KEY_ESCAPE))
-			mlx_close_window(g->mlx);
+			mlx_close_window((g->close = 1, g->mlx));
 		mlx_key_hook(g->mlx, &move, g);
 		check_collectible(g);
 		if (g->count_coll == 0)
@@ -91,6 +78,7 @@ void	open_window(t_lo *g)
 		exit((ft_printf("Error1\n"), EXIT_FAILURE));
 	}
 	mlx_set_window_pos(g->mlx, 1000, 500);
+	init_texture(g);
 	set_background(g);
 	set_player(g);
 	set_player_w(g);
@@ -104,5 +92,5 @@ void	open_window(t_lo *g)
 	init_death(g);
 	mlx_loop_hook(g->mlx, ft_hook, (void *)g);
 	mlx_loop(g->mlx);
-	destroy_all(g);
+	d_a(g);
 }

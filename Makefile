@@ -14,16 +14,11 @@ WHITE = \033[0;97m
 
 SRCS	= 	map/parsing.c \
 			map/parsing_map.c \
-			spread.c	\
-			open_window.c \
+			map/parsing2.c	\
 			animation/background.c \
 			animation/player.c \
 			animation/walls.c \
-			free_things.c	\
-			free_things2.c	\
-			free_things3.c	\
 			animation/collectible.c	\
-			collision.c \
 			animation/exit.c \
 			animation/ennemies.c \
 			animation/set_score.c \
@@ -31,9 +26,21 @@ SRCS	= 	map/parsing.c \
 			animation/anim.c	\
 			animation/player_death.c \
 			animation/player_w.c	\
-			move_player.c	\
 			animation/ennemies2.c  \
-			init_texture.c
+			animation/set_score2.c \
+			animation/player_w2.c \
+			animation/collectible2.c \
+			open_window.c \
+			free_things.c	\
+			free_things2.c	\
+			free_things3.c	\
+			collision.c \
+			spread.c	\
+			move_player.c	\
+			init_texture.c	\
+			init_death1.c	\
+			init_death2.c	\
+
 
 SRCS_MAIN	= so_long.c $(SRCS)
 
@@ -41,7 +48,7 @@ OBJS	= $(SRCS_MAIN:.c=.o)
 
 CC	= @gcc
 
-CFLAGS	+= -Wall -Wextra -Werror -g3 #-fsanitize=address
+CFLAGS	+= -Wall -Wextra -Werror -g3 -fsanitize=address
 
 RM	= @rm -rf
 
@@ -85,4 +92,4 @@ git	:
 	@echo "$(GREEN)(•̀ᴗ•́)و ̑̑GIT UPDATE!(•̀ᴗ•́)و ̑̑$(DEF_COLOR)"
 
 norm :
-	@norminette *.c *.h | grep -i -E 'Error'
+	@norminette *.c *.h animation/*.c map/*.c | grep -i -E 'Error'

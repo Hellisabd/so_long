@@ -6,13 +6,13 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 17:38:55 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/22 17:40:02 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/23 11:46:54 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	destroy_all9(t_lo *g)
+void	d_a9(t_lo *g)
 {
 	mlx_delete_image(g->mlx, g->death.d_screen);
 	mlx_delete_image(g->mlx, g->sword.tab[0]);
@@ -33,10 +33,10 @@ void	destroy_all9(t_lo *g)
 	mlx_delete_image(g->mlx, g->data_p.tab_w[3]);
 	mlx_delete_image(g->mlx, g->data_p.tab_w[4]);
 	mlx_delete_image(g->mlx, g->data_p.tab_w[5]);
-	destroy_all10(g);
+	d_a10(g);
 }
 
-void	destroy_all8(t_lo *g)
+void	d_a8(t_lo *g)
 {
 	mlx_delete_image(g->mlx, g->death.tab[12]);
 	mlx_delete_image(g->mlx, g->death.tab[13]);
@@ -56,10 +56,10 @@ void	destroy_all8(t_lo *g)
 	mlx_delete_image(g->mlx, g->death.tab[27]);
 	mlx_delete_image(g->mlx, g->death.tab[28]);
 	mlx_delete_image(g->mlx, g->death.tab[29]);
-	destroy_all9(g);
+	d_a9(g);
 }
 
-void	destroy_all7(t_lo *g)
+void	d_a7(t_lo *g)
 {
 	mlx_delete_image(g->mlx, g->sprite.background);
 	mlx_delete_image(g->mlx, g->sprite.player);
@@ -85,10 +85,10 @@ void	destroy_all7(t_lo *g)
 	mlx_delete_image(g->mlx, g->death.tab[9]);
 	mlx_delete_image(g->mlx, g->death.tab[10]);
 	mlx_delete_image(g->mlx, g->death.tab[11]);
-	destroy_all8(g);
+	d_a8(g);
 }
 
-void	destroy_all6(t_lo *g)
+void	d_a6(t_lo *g)
 {
 	if (g->score.s2_t)
 		mlx_delete_texture(g->score.s2_t);
@@ -106,10 +106,10 @@ void	destroy_all6(t_lo *g)
 		mlx_delete_texture(g->score.s8_t);
 	if (g->score.s9_t)
 		mlx_delete_texture(g->score.s9_t);
-	destroy_all7(g);
+	d_a7(g);
 }
 
-void	destroy_all5(t_lo *g)
+void	d_a5(t_lo *g)
 {
 	if (g->data_p.tab_t[4])
 		mlx_delete_texture(g->data_p.tab_t[4]);
@@ -131,5 +131,5 @@ void	destroy_all5(t_lo *g)
 		mlx_delete_texture(g->score.s0_t);
 	if (g->score.s1_t)
 		mlx_delete_texture(g->score.s1_t);
-	destroy_all6(g);
+	d_a6(g);
 }
