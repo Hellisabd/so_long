@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:48:27 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/23 15:26:26 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/27 11:42:10 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	ft_count_line(char *file, t_pars *pars)
 	pars->height = 0;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		exit((ft_printf("An error in the Open function errror as occured"), 1));
+		exit((ft_printf("Error\nAn error in the \
+			Open function errror as occured"), 1));
 	line = get_next_line(fd);
 	if (!line)
 		exit((ft_printf("Empty file or malloc error"), 1));

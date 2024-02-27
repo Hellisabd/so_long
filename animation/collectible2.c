@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:05:21 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/23 15:18:57 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/27 11:42:51 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,8 @@ int	integr_coll(t_lo *g)
 	}
 	if (replace > 3)
 		exit((ft_free_tab(g->map), ft_printf("Error\nToo many collectible"), 1));
+	if (replace < 1)
+		exit((ft_free_tab(g->map), \
+		ft_printf("Error\nNo collectibles found"), 1));
 	return (replace);
 }

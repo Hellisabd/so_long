@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 09:59:59 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/23 16:34:45 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/27 11:33:19 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ t_lo	lvl_def(char *file, t_lo game)
 	return (game);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	char	*file;
 	t_lo	g;
 
-	file = "map/map_file_2.ber";
-	if (!file_validity(file))
+	if (argc != 2)
+		return (ft_printf("Error\nToo many arguments\n"));
+	if (!file_validity(argv[1]))
 		return (ft_printf("Error\nWrong file format"), 0);
-	g = lvl_def(file, g);
+	g = lvl_def(argv[1], g);
 	mlx_terminate(g.mlx);
 }

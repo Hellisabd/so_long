@@ -92,4 +92,4 @@ git	:
 	@echo "$(GREEN)(•̀ᴗ•́)و ̑̑GIT UPDATE!(•̀ᴗ•́)و ̑̑$(DEF_COLOR)"
 
 norm :
-	@norminette *.c *.h animation/*.c map/*.c | grep -i -E 'Error'
+	@norminette *.c *.h animation/*.c map/*.c | grep -i -E 'Error' || norminette *.c *.h animation/*.c map/*.c
