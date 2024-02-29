@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:39:25 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/23 16:30:31 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/29 13:28:48 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	open_window(t_lo *g)
 	if (!g->mlx)
 	{
 		puts(mlx_strerror(mlx_errno));
-		exit((ft_printf("Error1\n"), EXIT_FAILURE));
+		exit((ft_printf("Error1\n"), ft_free_tab(g->map), EXIT_FAILURE));
 	}
 	mlx_set_window_pos(g->mlx, 1000, 500);
 	mlx_set_window_limit(g->mlx, WIDTH, HEIGHT, WIDTH, HEIGHT);

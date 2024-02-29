@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:44:01 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/23 17:00:15 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/29 13:27:47 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void	d_a(void *g1)
 	t_lo	*g;
 
 	g = g1;
+	ft_free_tab(g->map);
 	if (g->close == 0)
 		mlx_close_window(g->mlx);
 	if (g->sprite.back_t)

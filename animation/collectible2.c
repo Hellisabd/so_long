@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:05:21 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/27 11:42:51 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/27 14:37:33 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	check_collectible2(t_lo *g, int x, int y)
 {
 	if ((g->map[y][x] == 'D' && g->data_p.weapon != 2)
-		|| g->score.count_move >= 999)
+		|| g->score.count_move >= 100)
 		g->death.death = 1;
 	else if (g->map[y][x] == 'D' && g->data_p.weapon == 2)
 	{
