@@ -6,7 +6,7 @@
 /*   By: bgrosjea <bgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 09:59:59 by bgrosjea          #+#    #+#             */
-/*   Updated: 2024/02/29 13:28:28 by bgrosjea         ###   ########.fr       */
+/*   Updated: 2024/02/29 13:35:51 by bgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ t_lo	lvl_def(char *file, t_lo game)
 	game.size_block_x = round(WIDTH / (float)(game.width - 1));
 	game.size_block_y = round(HEIGHT / (float)(game.height));
 	open_window(&game);
-	if (game.map)
-		ft_free_tab(game.map);
 	return (game);
 }
 
