@@ -27,6 +27,7 @@ git clone https://github.com/Hellisabd/so_long.git
 
 # Build mandatory version
 cd so_long
+make mlx_init
 make
 
 # (Optional) Build bonus version
