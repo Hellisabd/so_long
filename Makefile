@@ -2,6 +2,8 @@ NAME	= so_long
 
 LIBS	= MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm
 
+MLX_DIRECTORY = ./MLX42
+
 DEF_COLOR = \033[0;39m
 GRAY = \033[0;90m
 RED = \033[0;91m
@@ -79,6 +81,9 @@ fclean :
 	@make --no-print-directory -C Libft fclean
 	@echo "$(MAGENTA)¯|_(ツ)_/¯ I'M SO PROUD OF U!$(DEF_COLOR)"
 
+mlx_init:
+	@ cd ${MLX_DIRECTORY} && cmake -B build
+	@ cd ${MLX_DIRECTORY} && cmake --build build -j4
 
 re :	fclean all
 
